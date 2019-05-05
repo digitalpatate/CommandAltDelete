@@ -23,7 +23,7 @@ Each action costs some kind of points like mana or energy, so that the player ne
 - Movement: Moves a character $x$ number of tiles forward or backward.
 - Attack: Deals damage at a range and within an area of effect.
 - Defense: Prevents the player from taking damage.
-- Boosts: Adds bonuses to stats.
+- Boosts: Adds positive or negative bonuses to stats.
 - Spells: Represents complex actions like canceling the last action, placing zone with some effect when stepped on or even compositions of attacks, movements, defenses, boosts and spells.
 
 ### Characters
