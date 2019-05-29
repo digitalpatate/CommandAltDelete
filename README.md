@@ -20,7 +20,7 @@ An attack will always be launched in front of the character. Attacks don't have 
 
 ### Actions
 
-The command pattern is used to represent the actions. For example, an attack may be a simple command that deals dammage to a player and a more complex one may deal damage and also poison the target or heal the caster. This shows the use of a macro command which is a composit of simple commands to create a more complex one (uses the composit pattern).
+The command pattern is used to represent the actions. For example, an attack may be a simple command that deals dammage to a player and a more complex one may deal damage and also poison the entity or heal the caster. This shows the use of a macro command which is a composit of simple commands to create a more complex one (uses the composit pattern).
 
 Each action costs energy and have priority, so that the player needs to carefully use his points and order his actions.
 
@@ -30,7 +30,7 @@ Moves a character x tiles forward or backward relatively of where it's facing. C
 
 #### Attack
 
-Deals damage to everything in front of the player. Damages are caculatade with a pourcentage of the character's damage stat. The target's health point can't go lower than zero. This pourcentage varies with distance. For exemple: 120% in the first 3 tiles, 80% in the next 5 and 40% until the end of the map.
+Deals damage to everything in front of the player. Damages are calculated with a percentage of the character's damage stat. The entity's health point can't go lower than zero. This pourcentage varies with distance. For exemple: 120% in the first 3 tiles, 80% in the next 5 and 40% until the end of the map.
 
 #### Heal
 
@@ -46,11 +46,11 @@ Adds positive or negative bonuses to the attack and the defense stats. As for th
 
 #### Spells
 
-A spell represents a complex action. It can be any composition of the previous actions. It can also be any unique action that doesn't enter in the categories above. For exemple it may cancel an opponent's action or push the opponent backward.
+A spell represents a complex action. It can be any composition of the previous actions. It can also be any unique action that doesnt enter in the categories above. For exemple it may cancel an opponent's action or push the opponent backward.
 
 ### Characters
 
-A character is played by players or AI and has differents stats like health or base damage.
+A character is played by players or AI and has different stats like health or base damage.
 
 #### Stats
 
