@@ -1,4 +1,4 @@
-package ch.heigvd.thecommandmasters;
+package ch.heigvd.thecommandmasters.Scene.Game;
 
 import javax.swing.*;
 import java.awt.*;
