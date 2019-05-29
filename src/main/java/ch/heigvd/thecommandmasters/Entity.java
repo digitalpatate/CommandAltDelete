@@ -1,9 +1,28 @@
 package ch.heigvd.thecommandmasters;
 
 public class Entity {
-    String name;
 
-    public Entity(String name) {
+    private String name;
+    private int position;
+    private int id;
+
+
+
+    public Entity(String name,int id) {
+
         this.name = name;
+        this.id=id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

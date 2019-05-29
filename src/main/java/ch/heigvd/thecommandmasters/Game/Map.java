@@ -1,13 +1,12 @@
 package ch.heigvd.thecommandmasters.Game;
 
-
 import ch.heigvd.thecommandmasters.Entity;
 
 public class Map {
 
     private Entity stage[];
     private Entity p1,p2;
-    private int positionP1,positionP2;
+
 
 
 public Map(int mapSize, Entity p1, Entity p2){
@@ -16,21 +15,28 @@ public Map(int mapSize, Entity p1, Entity p2){
     this.p1=p1;
     this.p2=p2;
 
-    positionP1=0;
-    positionP2=mapSize-1;
-
-    stage[positionP1]=p1;
-    stage[positionP2]=p2;
+    p1.setPosition(0);
+    p2.setPosition(mapSize-1);
 
 }
 
 
-    public int getPositionP1() {
-        return positionP1;
+    public  void move (Entity player, int movement, boolean direction){
+
+
+
     }
 
 
-    public int getPositionP2() {
-        return positionP2;
-    }
+//    private boolean validMovement(int movement, boolean direction){
+//
+//    boolean valid =false;
+//
+//
+//    return valid;
+//    }
+
+   // -deplacement (foward-backwards)
+    //-getplayers
+
 }
