@@ -3981,7 +3981,7 @@
 											"top": 312,
 											"width": 206.755859375,
 											"height": 13,
-											"text": "+Action(caster: Entity, target: Entity)",
+											"text": "+Action(caster: Entity, entity: Entity)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4156,7 +4156,7 @@
 										"$ref": "AAAAAAFqiPCSNBupGg0="
 									},
 									"edgePosition": 2,
-									"text": "-target"
+									"text": "-entity"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -7052,7 +7052,7 @@
 								"_parent": {
 									"$ref": "AAAAAAFqiPCSMxul41U="
 								},
-								"name": "target",
+								"name": "entity",
 								"reference": {
 									"$ref": "AAAAAAFqiPBPsBn2afk="
 								},
@@ -7131,7 +7131,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFqiPVqIjwG5uE="
 									},
-									"name": "target",
+									"name": "entity",
 									"type": {
 										"$ref": "AAAAAAFqg3PEBEZx0Qc="
 									}
@@ -7207,7 +7207,7 @@
 							"source": {
 								"$ref": "AAAAAAFqiPK2pSnC/c0="
 							},
-							"target": {
+							"entity": {
 								"$ref": "AAAAAAFqiPBPsBn2afk="
 							}
 						}

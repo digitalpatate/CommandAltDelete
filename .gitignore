@@ -180,7 +180,7 @@ Temporary Items
 .apdisk
 
 ### Maven ###
-entity/
+target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
