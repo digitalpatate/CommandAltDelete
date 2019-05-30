@@ -6,42 +6,41 @@ import java.util.Queue;
 
 public class ActionInvoker {
 
-    private Queue<Action> actions;
-    private int priority;
+    private ActionInvokerSlave[] invokers;
 
-    public ActionInvoker(Queue<Action> actions) {
+    public ActionInvoker(int playerCount) {
+        this.invokers = new ActionInvokerSlave[playerCount];
+    }
 
-        if (actions != null) {
-            this.actions = actions;
+    public void setEntityActions(int entityId, Queue<Action> actions) {
+
+        if (entityId < 0 || entityId >= invokers.length) {
+            throw new IllegalArgumentException("Entity id must be in [0 ; player count[");
         }
 
-        this.priority = 0;
-
-        updatePriority();
+        invokers[entityId] = new ActionInvokerSlave(actions);
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public boolean hasNext() {
-        return actions.isEmpty();
+    public boolean isReady() {
+        for (int i = 0; i < invokers.length; ++i) {
+            if (invokers[i] == null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void invokeNext() {
 
-        if (!hasNext()) {
+        if (!isReady()) {
             return;
         }
 
-        actions.poll().execute();
-        updatePriority();
-    }
-
-    private void updatePriority() {
-
-        if (hasNext()) {
-            priority += actions.peek().PRIORITY;
+        ActionInvokerSlave next = invokers[0];
+        for (int i = 1; i < invokers.length; ++i) {
+            if (invokers[i].getPriority() < next.getPriority()) {
+                next = invokers[i];
+            }
         }
     }
 }
