@@ -8,10 +8,10 @@ public class Entity {
 
 
 
-    public Entity(String name,int id) {
+    public Entity(String name, int id) {
 
         this.name = name;
-        this.id=id;
+        this.id = id;
     }
 
     public int getId() {
@@ -20,6 +20,10 @@ public class Entity {
 
     public int getPosition() {
         return position;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setPosition(int position) {

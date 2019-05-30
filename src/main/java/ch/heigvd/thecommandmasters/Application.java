@@ -18,7 +18,7 @@ public class Application extends JFrame implements EventListener {
         this.windowsWidth=windowsWidth;
         initUI();
         CharacterSelection panel = new CharacterSelection(windowsWidth,windowsHeigth);
-        panel.addChoseListener(e1 -> System.out.println(e1.getChosenOne().name));
+        panel.addChoseListener(e1 -> System.out.println(e1.getChosenOne()));
 
         setPanel(panel);
 
