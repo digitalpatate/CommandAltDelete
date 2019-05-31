@@ -4,7 +4,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -54,7 +57,17 @@ public class EntityClass implements Displayer{
     }
 
     @Override
-    public JPanel getPanel() {
-        return null;
+    public JLabel getImage() {
+        JLabel label = null;
+
+        try {
+            BufferedImage image = ImageIO.read(new File((String)jsonObject.get("image")));
+            label = new JLabel(new ImageIcon(image));
+            System.out.println(image.getHeight() + " . " + image.getWidth());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return label;
     }
 }

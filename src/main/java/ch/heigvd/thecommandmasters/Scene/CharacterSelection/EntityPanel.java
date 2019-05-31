@@ -1,6 +1,6 @@
 package ch.heigvd.thecommandmasters.Scene.CharacterSelection;
 
-import ch.heigvd.thecommandmasters.Character.Entity;
+import ch.heigvd.thecommandmasters.Character.EntityClass;
 import ch.heigvd.thecommandmasters.Event.ChoseEvent;
 import ch.heigvd.thecommandmasters.Event.ChoseListener;
 
@@ -10,18 +10,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class EntityPanel extends JPanel implements MouseListener {
-    Entity entity;
+    EntityClass entityClass;
     ChoseListener choseListener;
 
-    public EntityPanel(Entity e) {
-        this.entity = e;
+    public EntityPanel(EntityClass ec) {
+        this.entityClass = ec;
+        this.add(ec.getImage());
         setBackground(Color.BLUE);
         addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        choseListener.action(new ChoseEvent(entity));
+        choseListener.action(new ChoseEvent(entityClass));
     }
 
     @Override

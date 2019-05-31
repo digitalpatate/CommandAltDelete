@@ -1,8 +1,8 @@
 {
-  "class": "Ninja",
+  "class": "Archer",
   "power": "5",
   "health": "65",
   "energy": "100",
   "Defence": "15",
-  "image": ".\\data\\image\\ninja.png"
+  "image": ".\\data\\image\\archer.png"
 }

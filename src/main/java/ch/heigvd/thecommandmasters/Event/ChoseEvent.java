@@ -1,16 +1,16 @@
 package ch.heigvd.thecommandmasters.Event;
 
-import ch.heigvd.thecommandmasters.Character.Entity;
+import ch.heigvd.thecommandmasters.Character.EntityClass;
 
 public class ChoseEvent
 {
-    private Entity chosenOne;
+    private EntityClass chosenOne;
 
-    public ChoseEvent(Entity chosenOne) {
+    public ChoseEvent(EntityClass chosenOne) {
         this.chosenOne = chosenOne;
     }
 
-    public Entity getChosenOne() {
+    public EntityClass getChosenOne() {
         return chosenOne;
     }
 }

@@ -28,14 +28,12 @@ public class Application extends JFrame implements EventListener {
         setTitle("CommandMaster");
         setSize(windowsWidth, windowsHeigth);
         setLayout(new FlowLayout(0,0,0));
+        setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     private void setPanel(JPanel panel){
         add(panel);
     }
-
-
-
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
