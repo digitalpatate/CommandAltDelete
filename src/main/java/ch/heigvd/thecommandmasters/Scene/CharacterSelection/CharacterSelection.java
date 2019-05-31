@@ -28,9 +28,9 @@ public class CharacterSelection extends JPanel{
 
     private void load() {
         this.characters = new LinkedList<>();
-        characters.add(new Entity("Monsieur Patate"));
-        characters.add(new Entity("Madame Patate"));
-        characters.add(new Entity("Fils Patate"));
+        characters.add(new Entity("Monsieur Patate", 0));
+        characters.add(new Entity("Madame Patate", 1));
+        characters.add(new Entity("Fils Patate", 2));
     }
 
     public void addChoseListener(ChoseListener listener){

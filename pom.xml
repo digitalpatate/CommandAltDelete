@@ -7,10 +7,19 @@
     <groupId>ch.heigvd.thecommandMasters</groupId>
     <artifactId>CommandAltDelete</artifactId>
     <version>1.0</version>
+
     <properties><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target></properties>
+        <maven.compiler.entity>1.8</maven.compiler.entity>
+    </properties>
+
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.4.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
