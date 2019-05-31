@@ -1,6 +1,6 @@
 package ch.heigvd.thecommandmasters.command;
 
-import ch.heigvd.thecommandmasters.Entity;
+import ch.heigvd.thecommandmasters.Character.Entity;
 
 public abstract class Action implements Command {
 

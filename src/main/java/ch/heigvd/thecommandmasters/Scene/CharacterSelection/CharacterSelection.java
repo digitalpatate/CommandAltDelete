@@ -1,6 +1,6 @@
 package ch.heigvd.thecommandmasters.Scene.CharacterSelection;
 
-import ch.heigvd.thecommandmasters.Entity;
+import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.Event.ChoseEvent;
 import ch.heigvd.thecommandmasters.Event.ChoseListener;
 

@@ -1,6 +1,6 @@
 package ch.heigvd.thecommandmasters.Game;
 
-import ch.heigvd.thecommandmasters.Entity;
+import ch.heigvd.thecommandmasters.Character.Entity;
 
 public class Map {
 
