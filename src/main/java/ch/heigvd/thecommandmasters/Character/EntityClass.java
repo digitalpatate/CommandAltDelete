@@ -31,7 +31,7 @@ public class EntityClass implements Displayer{
     }
 
     public Entity createEntity(){
-        return new Entity(getHealth(), getEnergy(), getPower(), getShield(), this.toString());
+        return new Entity(getHealth(), getEnergy(), getPower(), getDefence(), this.toString());
     }
 
     public int getHealth(){
@@ -42,8 +42,8 @@ public class EntityClass implements Displayer{
         return Integer.parseInt((String)jsonObject.get("power"));
     }
 
-    public int getShield(){
-        return Integer.parseInt((String)jsonObject.get("shield"));
+    public int getDefence(){
+        return Integer.parseInt((String)jsonObject.get("Defence"));
     }
 
     public int getEnergy() { return Integer.parseInt((String)jsonObject.get("energy")); }

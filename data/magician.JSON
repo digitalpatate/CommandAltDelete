@@ -3,6 +3,6 @@
   "power": "15",
   "health": "30",
   "energy": "100",
-  "shield": "5",
+  "Defence": "5",
   "image": ".\\data\\image\\magician.png"
 }

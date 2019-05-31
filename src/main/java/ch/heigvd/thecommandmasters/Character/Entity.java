@@ -1,9 +1,6 @@
 package ch.heigvd.thecommandmasters.Character;
 
-import ch.heigvd.thecommandmasters.Stat.Boost;
-import ch.heigvd.thecommandmasters.Stat.Feature;
-import ch.heigvd.thecommandmasters.Stat.StatEffect;
-import ch.heigvd.thecommandmasters.Stat.Stats;
+import ch.heigvd.thecommandmasters.Stat.*;
 
 import java.util.LinkedList;
 
@@ -15,15 +12,15 @@ public class Entity {
     private Stats health;
     private Stats energy;
     private Feature power;
-    private Feature shield;
+    private Feature defence;
     private LinkedList<StatEffect> effects;
     private LinkedList<Boost> boosts;
 
-    Entity(int health, int energy, int power, int shield, String name){
+    Entity(int health, int energy, int power, int Defence, String name){
         this.health = new Stats(health, "Health");
         this.energy = new Stats(energy, "Energy");
         this.power = new Feature(power, "Power");
-        this.shield = new Feature(shield, "Shield");
+        this.defence = new Feature(Defence, "Defence");
         this.name = name;
         effects = new LinkedList<>();
         boosts = new LinkedList<>();
@@ -75,8 +72,8 @@ public class Entity {
         return energy.getValue();
     }
 
-    public int getShield(){
-        return shield.getValue();
+    public int getDefence(){
+        return defence.getValue();
     }
 
     public int getPower(){

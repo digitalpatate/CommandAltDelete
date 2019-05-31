@@ -3,6 +3,6 @@
   "power": "5",
   "health": "65",
   "energy": "100",
-  "shield": "15",
+  "Defence": "15",
   "image": ".\\data\\image\\ninja.png"
 }
