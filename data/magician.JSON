@@ -1,0 +1,7 @@
+{
+  "class": "Magician",
+  "power": "15",
+  "life": "30",
+  "shield": "5",
+  "image": ".\\data\\image\\magician.png"
+}
