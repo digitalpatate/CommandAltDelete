@@ -10,7 +10,7 @@ public class Stats {
      * @param maxValue
      * @param name
      */
-    Stats(int maxValue,String name){
+    public Stats(int maxValue,String name){
         this.maxValue = maxValue;
         this.name     = name;
     }
@@ -19,7 +19,7 @@ public class Stats {
      * methode that reduces the stat
      * @param value
      */
-    void reduceStat(int value){
+    public void reduceStat(int value){
 
         if(this.value < value)
             value = 0;
@@ -31,7 +31,7 @@ public class Stats {
      * methode that increases the stat
      * @param value
      */
-    void increaseStat(int value){
+    public void increaseStat(int value){
         if((this.value + value) == maxValue)
             this.value = maxValue;
 
@@ -42,11 +42,13 @@ public class Stats {
      * methode that get back the name
      * @return name
      */
-    String getName(){
+    public String getName(){
         return name;
     }
 
-
+    public int getValue(){
+        return value;
+    }
 
 
 }

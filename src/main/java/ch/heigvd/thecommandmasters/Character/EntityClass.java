@@ -31,11 +31,11 @@ public class EntityClass implements Displayer{
     }
 
     public Entity createEntity(){
-        return new Entity(getLife(), getPower(), getShield());
+        return new Entity(getHealth(), getEnergy(), getPower(), getShield(), this.toString());
     }
 
-    public int getLife(){
-        return Integer.parseInt((String)jsonObject.get("life"));
+    public int getHealth(){
+        return Integer.parseInt((String)jsonObject.get("health"));
     }
 
     public int getPower(){
@@ -45,6 +45,8 @@ public class EntityClass implements Displayer{
     public int getShield(){
         return Integer.parseInt((String)jsonObject.get("shield"));
     }
+
+    public int getEnergy() { return Integer.parseInt((String)jsonObject.get("energy")); }
 
     @Override
     public String toString(){

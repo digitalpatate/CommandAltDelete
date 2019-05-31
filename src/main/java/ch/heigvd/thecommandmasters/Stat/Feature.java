@@ -9,7 +9,7 @@ public class Feature {
      * @param value
      * @param name
      */
-    Feature(int value, String name){
+    public Feature(int value, String name){
         this.value = value;
         this.name  = name;
     }
@@ -18,7 +18,7 @@ public class Feature {
      * constructor with one parametre
      * @param value
      */
-    Feature(int value){
+    public Feature(int value){
         this.value = value;
         this.name  = "boost";
     }
@@ -27,7 +27,7 @@ public class Feature {
      * method that reduces the feature
      * @param value
      */
-    void reduceFeature(int value){
+    public void reduceFeature(int value){
 
         if(this.value < value)
             value = 0;
@@ -39,7 +39,7 @@ public class Feature {
      * method that increases the feature
      * @param value
      */
-    void increaseFeature(int value){
+    public void increaseFeature(int value){
         this.value += value;
     }
 
@@ -47,7 +47,7 @@ public class Feature {
      * method that get back the name
      * @return name
      */
-    String getName(){
+    public String getName(){
         return name;
     }
 
@@ -55,7 +55,7 @@ public class Feature {
      * method that get back the value
      * @return
      */
-    int getValue(){
+    public int getValue(){
         return value;
     }
 

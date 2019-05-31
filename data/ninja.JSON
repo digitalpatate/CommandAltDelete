@@ -1,7 +1,8 @@
 {
   "class": "Ninja",
   "power": "5",
-  "life": "65",
+  "health": "65",
+  "energy": "100",
   "shield": "15",
   "image": ".\\data\\image\\ninja.png"
 }

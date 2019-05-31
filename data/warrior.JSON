@@ -1,7 +1,8 @@
 {
   "class": "Warrior",
   "power": "10",
-  "life": "100",
+  "health": "100",
+  "energy": "100",
   "shield": "20",
   "image": ".\\data\\image\\warrior.png"
 }
