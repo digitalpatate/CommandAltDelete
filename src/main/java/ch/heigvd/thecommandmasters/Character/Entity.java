@@ -54,11 +54,10 @@ public class Entity {
     }
 
     public void heal(int amount){
-        health.increaseStat(amount);
+        health.changeStat(amount);
     }
 
     public void damage(int amount){
-
         int increaseDamage = 0;
         for(Boost b : boosts){
             if(b.getName().equals("Defence")) {
@@ -67,7 +66,7 @@ public class Entity {
             }
         }
 
-        health.reduceStat(amount);
+        health.changeStat(amount);
     }
 
     private void update(){
