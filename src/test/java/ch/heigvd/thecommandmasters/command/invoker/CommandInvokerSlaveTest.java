@@ -1,30 +1,30 @@
 package ch.heigvd.thecommandmasters.command.invoker;
 
-import ch.heigvd.thecommandmasters.command.Action;
-import ch.heigvd.thecommandmasters.command.DummyAction;
+import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.command.DummyCommand;
 import ch.heigvd.thecommandmasters.command.Value;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ActionInvokerSlaveTest {
+class CommandInvokerSlaveTest {
 
-    Value data;
-    ActionInvokerSlave invokerSlave;
+    private Value data;
+    private CommandInvokerSlave invokerSlave;
 
     @BeforeEach
     void setUp() {
         data = new Value(0);
 
-        invokerSlave = new ActionInvokerSlave(new Action[] {
-                new DummyAction(data),
-                new DummyAction(data),
-                new DummyAction(data)
+        invokerSlave = new CommandInvokerSlave(new Command[] {
+                new DummyCommand(data),
+                new DummyCommand(data),
+                new DummyCommand(data)
         });
     }
 
     @Test
-    void itCanInvokeEveryActions() {
+    void itCanInvokeEveryCommands() {
 
         int i = 0;
         while (invokerSlave.hasNext()) {
@@ -35,7 +35,7 @@ class ActionInvokerSlaveTest {
     }
 
     @Test
-    void itCanUndoTheLastAction() {
+    void itCanUndoTheLastCommand() {
 
         invokerSlave.invokeNext();
         Assertions.assertEquals(1, data.value);

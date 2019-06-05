@@ -1,25 +1,23 @@
 package ch.heigvd.thecommandmasters.command.invoker;
 
-import ch.heigvd.thecommandmasters.command.Action;
+import ch.heigvd.thecommandmasters.command.Command;
 
 /**
- * Manages invoker slaves to chose which action of which entity should be executed.
- * The entity with the lowest priority is the one to invoke its action.
+ * Manages invoker slaves to chose which command of which entity should be executed.
+ * The entity with the lowest priority is the one to invoke its command.
  * If there is a tie, the entity that was invoked the least recently is chosen.
- *
- * @author Nohan Budry
  */
-public class ActionInvoker {
+public class CommandInvoker {
 
-    private ActionInvokerSlave[] invokers;
+    private CommandInvokerSlave[] invokers;
     private int[] invocationOrder;
 
     /**
      * Creates a new invoker.
      * @param entityCount the number of entity the invoker manages.
      */
-    public ActionInvoker(int entityCount) {
-        this.invokers = new ActionInvokerSlave[entityCount];
+    public CommandInvoker(int entityCount) {
+        this.invokers = new CommandInvokerSlave[entityCount];
         this.invocationOrder = new int[entityCount];
 
         // Set a default order
@@ -29,21 +27,21 @@ public class ActionInvoker {
     }
 
     /**
-     * Sets the list of action of an entity.
+     * Sets the list of command of an entity.
      * @param entityId the entity's ID.
-     * @param actions the entity's actions.
+     * @param commands the entity's commands.
      */
-    public void setEntityActions(int entityId, Action[] actions) {
+    public void setEntityCommands(int entityId, Command[] commands) {
 
         if (!checkEntityId(entityId)) {
             throw new IllegalArgumentException("Entity id must be in [0 ; entity count[");
         }
 
-        invokers[entityId] = new ActionInvokerSlave(actions);
+        invokers[entityId] = new CommandInvokerSlave(commands);
     }
 
     /**
-     * Checks if all the entities have their actions set up..
+     * Checks if all the entities have their commands set up.
      * @return true if ready.
      */
     public boolean isReady() {
@@ -56,8 +54,8 @@ public class ActionInvoker {
     }
 
     /**
-     * Check if there are no more actions to invoke in all the entities.
-     * @return ture if finished.
+     * Check if there are no more commands to invoke in all the entities.
+     * @return true if finished.
      */
     public boolean hasFinished() {
         for (int i = 0; i < invokers.length; ++i) {
@@ -69,8 +67,8 @@ public class ActionInvoker {
     }
 
     /**
-     * Chooses an invoker slave and invokes his next action.
-     * The slave with the lowest priority is the one to invoke its action.
+     * Chooses an invoker slave and invokes his next command.
+     * The slave with the lowest priority is the one to invoke its command.
      * If there is a tie, the slave that was invoked the least recently is chosen.
      */
     public void invokeNext() {
@@ -82,7 +80,7 @@ public class ActionInvoker {
         int id = -1;
         int i = 0;
 
-        // Get first invoker with actions
+        // Get first invoker with commands
         for (; i < invokers.length; ++i) {
             if (invokers[i].hasNext()) {
                 id = i;
@@ -115,10 +113,10 @@ public class ActionInvoker {
     }
 
     /**
-     * Undoes the last action of an entity's opponent.
+     * Undoes the last command of an entity's opponent.
      * @param entityId the id of the entity.
      */
-    public void undoOpponentLastAction(int entityId) {
+    public void undoOpponentLast(int entityId) {
 
         if (checkEntityId(entityId)) {
 
@@ -133,7 +131,7 @@ public class ActionInvoker {
 
     /**
      * Updates the invocation order.
-     * @param entityId entity that just invoked an action
+     * @param entityId entity that just invoked an command
      */
     private void updateInvocationOrder(int entityId) {
 

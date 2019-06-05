@@ -1,15 +1,15 @@
 package ch.heigvd.thecommandmasters.command;
 
-public class DummyAction extends Action {
+public class DummyCommand extends Command {
 
     public Value data;
 
-    public DummyAction(Value data) {
-        this(data, 1);
+    public DummyCommand(Value data) {
+        this(1, data);
     }
 
-    public DummyAction(Value data, int priority) {
-        super(null, priority);
+    public DummyCommand(int priority, Value data) {
+        super(priority);
         this.data = data;
     }
 

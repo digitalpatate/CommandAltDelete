@@ -1,18 +1,18 @@
 package ch.heigvd.thecommandmasters.command.invoker;
 
-import ch.heigvd.thecommandmasters.command.Action;
-import ch.heigvd.thecommandmasters.command.DummyAction;
+import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.command.DummyCommand;
 import ch.heigvd.thecommandmasters.command.Value;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ActionInvokerTest {
+public class CommandInvokerTest {
 
     @Test
-    void itIsReadyIfEveryEntityActionsAreSet() {
+    void itIsReadyIfEveryEntityCommandsAreSet() {
 
         int playersCount = 2;
-        ActionInvoker invoker = new ActionInvoker(playersCount);
+        CommandInvoker invoker = new CommandInvoker(playersCount);
 
         Assertions.assertFalse(invoker.isReady());
 
@@ -20,21 +20,21 @@ public class ActionInvokerTest {
 
             Assertions.assertFalse(invoker.isReady());
 
-            invoker.setEntityActions(i, new Action[0]);
+            invoker.setEntityCommands(i, new Command[0]);
         }
 
         Assertions.assertTrue(invoker.isReady());
     }
 
     @Test
-    void itHasFinishedWhenInvokerSlavesHaveNoMoreActions() {
+    void itHasFinishedWhenInvokerSlavesHaveNoMoreCommands() {
 
         int playersCount = 2;
-        ActionInvoker invoker = new ActionInvoker(playersCount);
+        CommandInvoker invoker = new CommandInvoker(playersCount);
 
         for (int i = 0; i < playersCount; ++i) {
-            invoker.setEntityActions(i, new Action[]{
-                    new DummyAction(new Value(0))
+            invoker.setEntityCommands(i, new Command[]{
+                    new DummyCommand(new Value(0))
             });
         }
 
@@ -49,21 +49,21 @@ public class ActionInvokerTest {
     }
 
     @Test
-    void itInvokesAnActionOfTheInvokerSlaveWithTheLowestPriority() {
+    void itInvokesAnCommandOfTheInvokerSlaveWithTheLowestPriority() {
 
         Value data0 = new Value(0);
         Value data1 = new Value(0);
 
-        ActionInvoker invoker = new ActionInvoker(2);
+        CommandInvoker invoker = new CommandInvoker(2);
 
-        invoker.setEntityActions(0, new Action[] {
-                new DummyAction(data0),
-                new DummyAction(data0),
+        invoker.setEntityCommands(0, new Command[] {
+                new DummyCommand(data0),
+                new DummyCommand(data0),
         });
 
-        invoker.setEntityActions(1, new Action[] {
-                new DummyAction(data1),
-                new DummyAction(data1),
+        invoker.setEntityCommands(1, new Command[] {
+                new DummyCommand(data1),
+                new DummyCommand(data1),
         });
 
         invoker.invokeNext();
@@ -84,22 +84,22 @@ public class ActionInvokerTest {
 
         Value data = new Value(0);
 
-        ActionInvoker invoker = new ActionInvoker(3);
+        CommandInvoker invoker = new CommandInvoker(3);
 
-        invoker.setEntityActions(0, new Action[] {
-                new DummyAction(data),
-                new DummyAction(data),
-                new DummyAction(data),
+        invoker.setEntityCommands(0, new Command[] {
+                new DummyCommand(data),
+                new DummyCommand(data),
+                new DummyCommand(data),
         });
 
-        invoker.setEntityActions(1, new Action[] {
-                new DummyAction(data),
-                new DummyAction(data),
-                new DummyAction(data),
+        invoker.setEntityCommands(1, new Command[] {
+                new DummyCommand(data),
+                new DummyCommand(data),
+                new DummyCommand(data),
         });
 
-        invoker.setEntityActions(2, new Action[] {
-                new DummyAction(data, 3)
+        invoker.setEntityCommands(2, new Command[] {
+                new DummyCommand(3, data)
         });
 
         Assertions.assertArrayEquals(new int[] {2, 1, 0}, invoker.getInvocationOrder());
@@ -127,26 +127,26 @@ public class ActionInvokerTest {
     }
 
     @Test
-    void itCanUndoAnOpponentLastAction() {
+    void itCanUndoAnOpponentLastCommand() {
 
         Value data0 = new Value(0);
         Value data1 = new Value(0);
 
-        ActionInvoker invoker = new ActionInvoker(2);
+        CommandInvoker invoker = new CommandInvoker(2);
 
-        invoker.setEntityActions(0, new Action[] {
-                new DummyAction(data0),
-                new DummyAction(data0),
+        invoker.setEntityCommands(0, new Command[] {
+                new DummyCommand(data0),
+                new DummyCommand(data0),
         });
 
-        invoker.setEntityActions(1, new Action[] {
-                new DummyAction(data1, 2),
+        invoker.setEntityCommands(1, new Command[] {
+                new DummyCommand(2, data1),
         });
 
         invoker.invokeNext();
         invoker.invokeNext();
         invoker.invokeNext();
-        invoker.undoOpponentLastAction(1);
+        invoker.undoOpponentLast(1);
 
         Assertions.assertEquals(1, data0.value);
     }

@@ -1,4 +1,4 @@
-package ch.heigvd.thecommandmasters.command;
+package ch.heigvd.thecommandmasters.command.action;
 
 import ch.heigvd.thecommandmasters.Character.Entity;
 
@@ -8,7 +8,7 @@ public class AttackAction extends Action {
     private Entity caster;
 
     public AttackAction(Entity caster, Entity entity) {
-        super(entity, 2);
+        super(2, entity);
         this.caster = caster;
     }
 
