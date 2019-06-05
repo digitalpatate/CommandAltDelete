@@ -1,0 +1,8 @@
+{
+  "class": "Warrior",
+  "power": 10,
+  "health": 100,
+  "energy": 100,
+  "Defence": 20,
+  "image": "image/warrior.png"
+}

@@ -6,7 +6,6 @@ import org.json.simple.parser.ParseException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,18 +37,18 @@ public class EntityClass implements Displayer{
     }
 
     public int getHealth(){
-        return Integer.parseInt((String)jsonObject.get("health"));
+        return (int)jsonObject.get("health");
     }
 
     public int getPower(){
-        return Integer.parseInt((String)jsonObject.get("power"));
+        return (int)jsonObject.get("power");
     }
 
     public int getDefence(){
-        return Integer.parseInt((String)jsonObject.get("Defence"));
+        return (int)jsonObject.get("Defence");
     }
 
-    public int getEnergy() { return Integer.parseInt((String)jsonObject.get("energy")); }
+    public int getEnergy() { return (int)jsonObject.get("energy"); }
 
     @Override
     public String toString(){

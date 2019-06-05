@@ -28,14 +28,13 @@ public class CharacterSelection extends JPanel{
     }
 
     private void load() {
-        String directory = ".\\data";
         this.characters = new LinkedList<>();
-        File repertoire = new File(directory);
+        File repertoire = new File("./");
         String liste[] = repertoire.list((x,y) -> y.endsWith(".JSON") ? true : false);
 
         if(liste != null){
             for(String s : liste)
-                characters.add(new EntityClass(new File(directory + "\\" + s)));
+                characters.add(new EntityClass(new File( s)));
         }
     }
 

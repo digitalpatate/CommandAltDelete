@@ -1,0 +1,8 @@
+{
+  "class": "Magician",
+  "power": 15,
+  "health": 30,
+  "energy": 100,
+  "Defence": 5,
+  "image": "image/magician.png"
+}

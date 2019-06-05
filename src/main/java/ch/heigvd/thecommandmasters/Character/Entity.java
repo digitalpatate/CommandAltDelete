@@ -64,6 +64,10 @@ public class Entity {
         effects.add(statEffect);
     }
 
+    public void applyBoost(Boost boost){
+        boosts.add(boost);
+    }
+
     public int getHealth(){
         return health.getValue();
     }
