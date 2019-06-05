@@ -62,4 +62,7 @@ public class Boost {
         return feature;
     }
 
+    public BoostType getBt(){
+        return bt;
+    }
 }
