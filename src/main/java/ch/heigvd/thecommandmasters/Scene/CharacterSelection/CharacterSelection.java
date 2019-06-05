@@ -5,7 +5,6 @@ import ch.heigvd.thecommandmasters.Event.ChoseEvent;
 import ch.heigvd.thecommandmasters.Event.ChoseListener;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.io.File;
 import java.util.LinkedList;
@@ -15,8 +14,10 @@ import java.util.LinkedList;
 public class CharacterSelection extends JPanel{
     LinkedList<EntityClass> characters;
     ChoseListener listener;
-    public CharacterSelection(int width, int heigth){
-        setPreferredSize(new Dimension(width,heigth));
+    public CharacterSelection(Dimension dimension) {
+
+        System.out.println(dimension);
+        setPreferredSize(dimension);
         load();
         this.setLayout(new GridLayout(0,characters.size()));
         setBackground(Color.BLACK);
