@@ -53,11 +53,11 @@ public class Entity {
     }
 
     public void heal(int amount){
-        health.increaseStat(amount);
+        health.changeStat(amount);
     }
 
     public void damage(int amount){
-        health.reduceStat(amount);
+        health.changeStat(amount);
     }
 
     public void applyEffect(StatEffect statEffect){
