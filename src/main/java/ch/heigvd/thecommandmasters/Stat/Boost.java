@@ -1,10 +1,12 @@
 package ch.heigvd.thecommandmasters.Stat;
 
+
 public class Boost {
     String name;
     int value;
     int duration;
     Feature feature;
+    BoostType bt;
 
     /**
      * Constructor
@@ -13,12 +15,14 @@ public class Boost {
      * @param valeur
      * @param duree
      */
-    Boost(Feature feature, String name, int valeur, int duree){
+    Boost(Feature feature, String name, int valeur, int duree,BoostType bt){
         this.name   = name;
         this.duration  = duration;
         this.value = value;
         this.feature = feature;
+        this.bt = bt;
     }
+
 
 
     /**
