@@ -83,4 +83,6 @@ public class Entity {
     public int getPower(){
         return power.getValue();
     }
+
+
 }
