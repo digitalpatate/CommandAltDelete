@@ -2,6 +2,7 @@ package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Entity {
@@ -57,7 +58,23 @@ public class Entity {
     }
 
     public void damage(int amount){
+
+        int increaseDamage = 0;
+        for(Boost b : boosts){
+            if(b.getName().equals("Defence")) {
+                increaseDamage += b.getValue();
+                b.reduceDuration();
+            }
+        }
+
         health.reduceStat(amount);
+    }
+
+    private void update(){
+        Iterator it = boosts.iterator();
+        while(it.hasNext()){
+         //   ((Boost)it.next());
+        }
     }
 
     public void applyEffect(StatEffect statEffect){
@@ -83,4 +100,6 @@ public class Entity {
     public int getPower(){
         return power.getValue();
     }
+
+    public int attack(){return 0;}
 }
