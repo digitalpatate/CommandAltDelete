@@ -127,7 +127,7 @@ public class ActionInvokerTest {
     }
 
     @Test
-    void itCanUndoAnOpponentPreviousAction() {
+    void itCanUndoAnOpponentLastAction() {
 
         Value data0 = new Value(0);
         Value data1 = new Value(0);
@@ -146,7 +146,7 @@ public class ActionInvokerTest {
         invoker.invokeNext();
         invoker.invokeNext();
         invoker.invokeNext();
-        invoker.undoOpponentLast(1);
+        invoker.undoOpponentLastAction(1);
 
         Assertions.assertEquals(1, data0.value);
     }

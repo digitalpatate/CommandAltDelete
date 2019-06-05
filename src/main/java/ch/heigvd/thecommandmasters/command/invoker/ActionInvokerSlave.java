@@ -8,7 +8,7 @@ import ch.heigvd.thecommandmasters.command.Action;
  * and equals the sum of invoked actions priorities plus the next one's priority.
  * <p>
  * This class is used by the action invoker to chose the salve that will invoke the next action.
- * For example, ff each slave corresponds to a player's list of actions. the player with the lowest
+ * For example, if each slave corresponds to a player's list of actions, the player with the lowest
  * priority is the next to execute his action.
  *
  * @author Nohan Budry
@@ -70,7 +70,7 @@ class ActionInvokerSlave {
     /**
      * Calls undo() in the last invoked action
      */
-    void undoPrevious() {
+    void undoLast() {
         if (current > 0) {
             actions[current - 1].undo();
         }

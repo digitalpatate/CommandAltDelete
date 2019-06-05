@@ -35,12 +35,12 @@ class ActionInvokerSlaveTest {
     }
 
     @Test
-    void itCanUndoThePreviousAction() {
+    void itCanUndoTheLastAction() {
 
         invokerSlave.invokeNext();
         Assertions.assertEquals(1, data.value);
 
-        invokerSlave.undoPrevious();
+        invokerSlave.undoLast();
         Assertions.assertEquals(0, data.value);
     }
 
