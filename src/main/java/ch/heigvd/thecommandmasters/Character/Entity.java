@@ -2,6 +2,7 @@ package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Entity {
@@ -13,8 +14,8 @@ public class Entity {
     private Stats energy;
     private Feature power;
     private Feature defence;
-    private LinkedList<StatEffect> effects;
-    private LinkedList<Boost> boosts;
+    private LinkedList<Boost> boostAttack;
+    private LinkedList<Boost> boostDefense;
 
     Entity(int health, int energy, int power, int Defence, String name){
         this.health = new Stats(health, "Health");
@@ -22,14 +23,8 @@ public class Entity {
         this.power = new Feature(power, "Power");
         this.defence = new Feature(Defence, "Defence");
         this.name = name;
-        effects = new LinkedList<>();
-        boosts = new LinkedList<>();
-    }
-
-    // A supprimer
-    public Entity(String name, int id) {
-        this.name = name;
-        this.id = id;
+        boostAttack = new LinkedList<>();
+        boostDefense = new LinkedList<>();
     }
 
     public int getId() {
@@ -53,19 +48,46 @@ public class Entity {
     }
 
     public void heal(int amount){
-        health.increaseStat(amount);
+        health.changeStat(amount);
     }
 
     public void damage(int amount){
-        health.reduceStat(amount);
+        int decreaseDamage = 0;
+        for(Boost b : boostDefense){
+            decreaseDamage += b.getValue();
+            b.reduceDuration();
+        }
+
+        health.changeStat(amount);
     }
 
-    public void applyEffect(StatEffect statEffect){
-        effects.add(statEffect);
+    public int attack(){
+        int increaseDamage = 0;
+        for(Boost b : boostAttack){
+            increaseDamage += b.getValue();
+            b.reduceDuration();
+        }
+        return power.getValue() + increaseDamage;
+    }
+
+    private void update(){
+        /*Iterator it = boosts.iterator();
+        while(it.hasNext()){
+            Boost b = ((Boost)it.next());
+            if(b.getDuration() == 0){
+                it.remove();
+            }
+        }
+
+        for()*/
+    }
+
+    public void applyHeal(StatEffect statEffect){
+        //heal.addEffect(statEffect);
     }
 
     public void applyBoost(Boost boost){
-        boosts.add(boost);
+        //boosts.add(boost);
     }
 
     public int getHealth(){
@@ -83,6 +105,4 @@ public class Entity {
     public int getPower(){
         return power.getValue();
     }
-
-
 }

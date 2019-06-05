@@ -62,7 +62,6 @@ public class EntityClass implements Displayer{
         try {
             BufferedImage image = ImageIO.read(new File((String)jsonObject.get("image")));
             label = new JLabel(new ImageIcon(image));
-            System.out.println(image.getHeight() + " . " + image.getWidth());
         } catch (IOException e) {
             e.printStackTrace();
         }

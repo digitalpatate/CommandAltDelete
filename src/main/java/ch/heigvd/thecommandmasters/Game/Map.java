@@ -80,7 +80,7 @@ public class Map {
 
             if (player.getPosition() - movement > p1.getPosition()) {
 
-                player.move(movement);
+                player.move(-movement);
 
             } else {
 
@@ -92,7 +92,7 @@ public class Map {
 
             if (player.getPosition() - movement <= mapSize - 1) {
 
-                player.move(movement);
+                player.move(-movement);
 
             } else {
                 player.setPosition(mapSize - 1);
