@@ -13,15 +13,15 @@ public class Entity {
     private Stats health;
     private Stats energy;
     private Feature power;
-    private Feature defence;
+    private Feature defense;
     private LinkedList<Boost> boostAttack;
     private LinkedList<Boost> boostDefense;
 
-    Entity(int health, int energy, int power, int Defence, String name){
+    Entity(int health, int energy, int power, int Defense, String name){
         this.health = new Stats(health, "Health");
         this.energy = new Stats(energy, "Energy");
         this.power = new Feature(power, "Power");
-        this.defence = new Feature(Defence, "Defence");
+        this.defense = new Feature(Defense, "Defense");
         this.name = name;
         boostAttack = new LinkedList<>();
         boostDefense = new LinkedList<>();
@@ -58,7 +58,7 @@ public class Entity {
             b.reduceDuration();
         }
 
-        health.changeStat(amount);
+        health.changeStat(amount - decreaseDamage);
     }
 
     public int attack(){
@@ -71,23 +71,40 @@ public class Entity {
     }
 
     private void update(){
-        /*Iterator it = boosts.iterator();
-        while(it.hasNext()){
-            Boost b = ((Boost)it.next());
+        Iterator itDefense = boostDefense.iterator();
+        while(itDefense.hasNext()){
+            Boost b = ((Boost)itDefense.next());
             if(b.getDuration() == 0){
-                it.remove();
+                itDefense.remove();
             }
         }
 
-        for()*/
+        Iterator itAttack = boostAttack.iterator();
+        while(itAttack.hasNext()){
+            Boost b = ((Boost)itAttack.next());
+            if(b.getDuration() == 0){
+                itAttack.remove();
+            }
+        }
+
+        health.update();
+        energy.update();
     }
 
-    public void applyHeal(StatEffect statEffect){
-        //heal.addEffect(statEffect);
+    public void applyHealth(StatEffect statEffect){
+        health.addEffect(statEffect);
+    }
+
+    public void applyEnergy(StatEffect statEffect){
+        energy.addEffect(statEffect);
+    }
+
+    public void applyBoostDefense(Boost boost){
+        boostDefense.add(boost);
     }
 
     public void applyBoost(Boost boost){
-        //boosts.add(boost);
+        boostAttack.add(boost);
     }
 
     public int getHealth(){
@@ -98,8 +115,8 @@ public class Entity {
         return energy.getValue();
     }
 
-    public int getDefence(){
-        return defence.getValue();
+    public int getDefense(){
+        return defense.getValue();
     }
 
     public int getPower(){
