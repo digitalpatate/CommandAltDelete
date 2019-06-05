@@ -42,4 +42,20 @@ public class Boost {
         return f;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public int getValue(){
+        return value;
+    }
+
+    public int getDuration(){
+        return duration;
+    }
+
+    public Feature getFeature(){
+        return feature;
+    }
+
 }
