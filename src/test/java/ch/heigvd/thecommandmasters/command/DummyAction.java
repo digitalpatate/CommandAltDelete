@@ -5,7 +5,11 @@ public class DummyAction extends Action {
     public Value data;
 
     public DummyAction(Value data) {
-        super(null, 1);
+        this(data, 1);
+    }
+
+    public DummyAction(Value data, int priority) {
+        super(null, priority);
         this.data = data;
     }
 

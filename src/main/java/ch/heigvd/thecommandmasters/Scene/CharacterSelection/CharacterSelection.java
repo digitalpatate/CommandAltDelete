@@ -35,7 +35,7 @@ public class CharacterSelection extends JPanel{
 
         if(liste != null){
             for(String s : liste)
-                characters.add(new EntityClass(new File( s)));
+                characters.add(new EntityClass(new File(s)));
         }
     }
 

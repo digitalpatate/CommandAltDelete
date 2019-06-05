@@ -5,6 +5,7 @@ public class StatEffect {
     int value;
     String name;
     Stats stat;
+    StatsType st;
 
 
     /**
@@ -14,11 +15,12 @@ public class StatEffect {
      * @param name
      * @param stat
      */
-    StatEffect(int value, int duration, String name, Stats stat){
+    StatEffect(int value, int duration, String name, Stats stat, StatsType st){
         this.value    = value;
         this.duration = duration;
         this.name     = name;
         this.stat     = stat;
+
     }
 
 
@@ -26,7 +28,7 @@ public class StatEffect {
      * the method use the method of the class stat for increase the stat
      */
     public void increaseEffectStat(){
-        stat.increaseStat(value);
+        stat.changeStat(value);
         duration--;
     }
 
@@ -34,9 +36,12 @@ public class StatEffect {
      * the method use the method of the class stat for reduce the stat
      */
     public void reduceEffectStat(){
-        stat.reduceStat(value);
+        stat.changeStat(value);
         duration--;
     }
 
+    public int getValue(){
+        return value;
+    }
 
 }

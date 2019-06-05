@@ -27,7 +27,7 @@ public class ActionInvokerTest {
     }
 
     @Test
-    void itHasFinishedWhenInvokerSlavesHaveNotMoreActions() {
+    void itHasFinishedWhenInvokerSlavesHaveNoMoreActions() {
 
         int playersCount = 2;
         ActionInvoker invoker = new ActionInvoker(playersCount);
@@ -77,5 +77,77 @@ public class ActionInvokerTest {
 
         invoker.invokeNext();
         Assertions.assertEquals(2, data1.value);
+    }
+
+    @Test
+    void itUpdatesInvocationOrderProperly() {
+
+        Value data = new Value(0);
+
+        ActionInvoker invoker = new ActionInvoker(3);
+
+        invoker.setEntityActions(0, new Action[] {
+                new DummyAction(data),
+                new DummyAction(data),
+                new DummyAction(data),
+        });
+
+        invoker.setEntityActions(1, new Action[] {
+                new DummyAction(data),
+                new DummyAction(data),
+                new DummyAction(data),
+        });
+
+        invoker.setEntityActions(2, new Action[] {
+                new DummyAction(data, 3)
+        });
+
+        Assertions.assertArrayEquals(new int[] {2, 1, 0}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {0, 2, 1}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {1, 0, 2}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {0, 1, 2}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {1, 0, 2}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {2, 1, 0}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {0, 2, 1}, invoker.getInvocationOrder());
+
+        invoker.invokeNext();
+        Assertions.assertArrayEquals(new int[] {1, 0, 2}, invoker.getInvocationOrder());
+    }
+
+    @Test
+    void itCanUndoAnOpponentPreviousAction() {
+
+        Value data0 = new Value(0);
+        Value data1 = new Value(0);
+
+        ActionInvoker invoker = new ActionInvoker(2);
+
+        invoker.setEntityActions(0, new Action[] {
+                new DummyAction(data0),
+                new DummyAction(data0),
+        });
+
+        invoker.setEntityActions(1, new Action[] {
+                new DummyAction(data1, 2),
+        });
+
+        invoker.invokeNext();
+        invoker.invokeNext();
+        invoker.invokeNext();
+        invoker.undoOpponentLast(1);
+
+        Assertions.assertEquals(1, data0.value);
     }
 }

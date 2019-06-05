@@ -8,7 +8,6 @@ public class GameLogic {
 
         this.map=map;
 
-
     }
 
 //-players
