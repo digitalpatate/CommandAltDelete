@@ -6,11 +6,13 @@ public class Map {
 
     private Entity stage[];
     private Entity p1,p2;
+    private int mapSize;
 
 
 
 public Map(int mapSize, Entity p1, Entity p2){
 
+    this.mapSize=mapSize;
     stage= new Entity[mapSize];
     this.p1=p1;
     this.p2=p2;
@@ -18,25 +20,90 @@ public Map(int mapSize, Entity p1, Entity p2){
     p1.setPosition(0);
     p2.setPosition(mapSize-1);
 
+    stage[p1.getPosition()]=p1;
+    stage[p2.getPosition()]=p2;
+
+
+
 }
 
 
-    public  void move (Entity player, int movement, boolean direction){
+    public void move(Entity player, int movement) {
 
+        int id = player.getId();
+
+        displacement(player, movement, id);
 
 
     }
 
+    private void displacement(Entity player, int movement, int id) {
+        if (id == 0) {
 
-//    private boolean validMovement(int movement, boolean direction){
-//
-//    boolean valid =false;
-//
-//
-//    return valid;
-//    }
+            playerOneMove(player, movement);
 
-   // -deplacement (foward-backwards)
-    //-getplayers
+        } else { //player 2
+
+            playerTwoMove(player, movement);
+
+        }
+    }
+
+    private void playerTwoMove(Entity player, int movement) {
+        if (movement > 0) {
+
+                if (player.getPosition() - movement > p1.getPosition()) {
+
+                    player.move(movement);
+
+                } else {
+
+                    player.setPosition(p1.getPosition() + 1);
+
+                }
+
+            } else {
+
+                if (player.getPosition() - movement <= mapSize - 1) {
+
+                    player.move(movement);
+
+                } else {
+                    player.setPosition(mapSize - 1);
+
+                }
+        }
+    }
+
+    private void playerOneMove(Entity player, int movement) {
+        if (movement > 0) {
+
+            if (player.getPosition() + movement < p2.getPosition()) {
+
+                player.move(movement);
+
+            } else {
+
+                player.setPosition(p2.getPosition() - 1);
+
+            }
+
+
+        } else {
+
+            if (player.getPosition() - movement <= 0) {
+
+                player.move(movement);
+
+            } else {
+
+                player.setPosition(0);
+
+            }
+
+        }
+    }
+
+
 
 }
