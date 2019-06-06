@@ -11,11 +11,11 @@ public class HealthEffectAction extends StatEffectAction {
     @Override
     public void execute() {
         createStatEffect();
-        getEntity().applyHealthEffect(statEffect);
+        entity.addHealthEffect(statEffect);
     }
 
     @Override
     public void undo() {
-        getEntity().removeHealthEffect(statEffect);
+        entity.removeHealthEffect(statEffect);
     }
 }

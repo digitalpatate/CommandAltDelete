@@ -1,9 +1,8 @@
 package ch.heigvd.thecommandmasters.Stat;
 
-
 public class Boost {
 
-    private int value;
+    private final int value;
     private int duration;
     private BoostType type;
 

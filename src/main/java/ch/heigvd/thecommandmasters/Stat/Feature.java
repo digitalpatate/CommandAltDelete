@@ -1,8 +1,13 @@
 package ch.heigvd.thecommandmasters.Stat;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
 public class Feature {
-    int value;
-    String name;
+
+    public final int VALUE; // The feature's base value
+    private final String name;
+    private LinkedList<Boost> boosts;
 
     /**
      * constructor
@@ -10,37 +15,31 @@ public class Feature {
      * @param name
      */
     public Feature(int value, String name){
-        this.value = value;
-        this.name  = name;
+        this.VALUE = value;
+        this.name = name;
+        this.boosts = new LinkedList<>();
     }
 
-    /** TEST
-     * constructor with one parametre
-     * @param value
-     */
-    public Feature(int value){
-        this.value = value;
-        this.name  = "boost";
+    public void updateBoosts() {
+
+        Iterator<Boost> it = boosts.iterator();
+        while (it.hasNext()) {
+
+            Boost boost = it.next();
+            boost.reduceDuration();
+
+            if (boost.getDuration() <= 0) {
+                it.remove();
+            }
+        }
     }
 
-    /**
-     * method that reduces the feature
-     * @param value
-     */
-    public void reduceFeature(int value){
-
-        if(this.value < value)
-            value = 0;
-
-        this.value -= value;
+    public void addBoost(Boost boost) {
+        boosts.add(boost);
     }
 
-    /**
-     * method that increases the feature
-     * @param value
-     */
-    public void increaseFeature(int value){
-        this.value += value;
+    public void removeBoost(Boost boost) {
+        boosts.remove(boost);
     }
 
     /**
@@ -52,11 +51,17 @@ public class Feature {
     }
 
     /**
-     * method that get back the value
-     * @return
+     * method that get back the value with the boosts
+     * @return the boosted total value
      */
-    public int getValue(){
-        return value;
+    public int getValue() {
+
+        int total = VALUE;
+        for (Boost boost : boosts) {
+            total += boost.getValue();
+        }
+
+        return total;
     }
 
 

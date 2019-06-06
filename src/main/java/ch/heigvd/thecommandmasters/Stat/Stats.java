@@ -1,47 +1,55 @@
 package ch.heigvd.thecommandmasters.Stat;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Stats {
-    int value;
-    int maxValue;
-    String name;
-    LinkedList<StatEffect> listStatsEffect;
+
+    private int value;
+    public final int MAX;
+    private String name;
+    private LinkedList<StatEffect> effects;
 
     /**
      * Constructor
      * @param maxValue
      * @param name
      */
-    public Stats(int maxValue,String name){
-        this.maxValue = maxValue;
-        this.name     = name;
+    public Stats(int maxValue, String name){
+        this.MAX = maxValue;
+        this.value = MAX;
+        this.name = name;
+        this.effects = new LinkedList<>();
     }
-
 
     /**
      * methode that increases the stat
-     * @param value
+     * @param amount
      */
-    public void changeStat(int value){
-        if((this.value + value) == maxValue)
-            this.value = maxValue;
+    public void changeStat(int amount) {
 
-        if((this.value + value) < value)
+        int result = value + amount;
+
+        if (result >= MAX) {
+            value = MAX;
+            return;
+        }
+
+        if (result <= 0) {
             value = 0;
+            return;
+        }
 
-        this.value += value;
+        value = result;
     }
 
-
     public void addEffect(StatEffect st){
-        listStatsEffect.add(st);
+        effects.add(st);
     }
 
     public void removeEffect(StatEffect st){
-        listStatsEffect.remove(st);
+        effects.remove(st);
     }
-
 
     /**
      * methode that get back the name
@@ -55,11 +63,19 @@ public class Stats {
         return value;
     }
 
-    public void update(){
-        for(StatEffect st : listStatsEffect){
-            changeStat(st.getValue());
+    public void updateEffects() {
+
+        Iterator<StatEffect> it = effects.iterator();
+        while (it.hasNext()) {
+
+            StatEffect effect = it.next();
+
+            changeStat(effect.getValue());
+            effect.reduceDuration();
+
+            if (effect.getDuration() <= 0) {
+                it.remove();
+            }
         }
     }
-
-
 }

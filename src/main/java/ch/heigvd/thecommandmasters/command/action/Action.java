@@ -10,9 +10,9 @@ import java.util.logging.Logger;
  */
 public abstract class Action extends Command {
 
-    static final Logger LOG = Logger.getLogger(Command.class.getSimpleName());
+    protected static final Logger LOG = Logger.getLogger(Command.class.getSimpleName());
 
-    private Entity entity;
+    protected final Entity entity;
 
     /**
      * Constructor.
@@ -30,13 +30,5 @@ public abstract class Action extends Command {
     public Action(int priority, Entity entity) {
         super(priority);
         this.entity = entity;
-    }
-
-    /**
-     * Gets the action's entity.
-     * @return entity.
-     */
-    public Entity getEntity() {
-        return entity;
     }
 }

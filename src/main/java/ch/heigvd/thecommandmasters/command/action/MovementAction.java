@@ -16,11 +16,11 @@ public class MovementAction extends Action {
 
     @Override
     public void execute() {
-        map.move(getEntity(), movement);
+        map.move(entity, movement);
     }
 
     @Override
     public void undo() {
-        map.move(getEntity(), -movement);
+        map.move(entity, -movement);
     }
 }

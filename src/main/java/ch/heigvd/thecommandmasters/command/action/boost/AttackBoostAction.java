@@ -12,11 +12,11 @@ public class AttackBoostAction extends BoostAction {
     @Override
     public void execute() {
         createBoost(BoostType.ATTACK);
-        getEntity().applyAttackBoost(boost);
+        entity.addPowerBoost(boost);
     }
 
     @Override
     public void undo() {
-        getEntity().removeAttackBoost(boost);
+        entity.removePowerBoost(boost);
     }
 }

@@ -15,7 +15,6 @@ public class StatEffect {
     public StatEffect(int value, int duration){
         this.value    = value;
         this.duration = duration;
-
     }
 
     /**
@@ -34,7 +33,15 @@ public class StatEffect {
         duration--;
     }
 
+    public void reduceDuration() {
+        duration--;
+    }
+
     public int getValue(){
         return value;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 }
