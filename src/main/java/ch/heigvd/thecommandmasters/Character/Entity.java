@@ -17,7 +17,7 @@ public class Entity {
     private LinkedList<Boost> boostAttack;
     private LinkedList<Boost> boostDefense;
 
-    Entity(int health, int energy, int power, int Defense, String name){
+    public Entity(int health, int energy, int power, int Defense, String name){
         this.health = new Stats(health, "Health");
         this.energy = new Stats(energy, "Energy");
         this.power = new Feature(power, "Power");
@@ -37,6 +37,10 @@ public class Entity {
 
     public String getName() {
         return name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPosition(int position) {
