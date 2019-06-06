@@ -5,24 +5,13 @@ import ch.heigvd.thecommandmasters.command.action.Action;
 
 public class AttackAction extends Action {
 
-    public class Modifier {
-
-        final int DISTANCE;
-        final int PERCENTAGE;
-
-        Modifier(int distance, int percentage) {
-            this.DISTANCE = distance;
-            this.PERCENTAGE = percentage;
-        }
-    }
-
     protected final Entity caster;
     private final int defaultPercentage;
-    private Modifier[] modifiers;
+    private AttackModifier[] modifiers;
 
     private int damage = 0;
 
-    public AttackAction(Entity caster, Entity entity, int percentage, Modifier[] modifiers) {
+    public AttackAction(Entity caster, Entity entity, int percentage, AttackModifier[] modifiers) {
         super(2, entity);
         this.caster = caster;
         this.defaultPercentage = percentage;
@@ -32,21 +21,31 @@ public class AttackAction extends Action {
     @Override
     final public void execute() {
 
-        damage = calculateDamage();
+        damage = Math.max(calculateDamage(), 0);
 
-        entity.damage(damage);
+        if (entity.damage(damage)) {
 
-        updateUsedBoosts();
+            updateUsedBoosts();
 
-        LOG.info(String.format(
-                "%s received %d damage from %s.",
-                entity.getName(), damage, caster.getName()
-        ));
+            LOG.info(String.format(
+                    "%s received %d damage from %s.",
+                    entity.getName(), damage, caster.getName()
+            ));
+        }
     }
 
     @Override
     final public void undo() {
-        entity.heal(damage);
+
+        // TODO: restore duration of boosts?
+
+        if (entity.heal(damage)) {
+
+            LOG.info(String.format(
+                    "%s's attack undone. %s gained %d health.",
+                    caster.getName(), entity.getName(), damage
+            ));
+        }
     }
 
     private int calculatePercentage() {
@@ -55,7 +54,7 @@ public class AttackAction extends Action {
         int percentage = defaultPercentage;
         int d = 0;
 
-        for (Modifier modifier : modifiers) {
+        for (AttackModifier modifier : modifiers) {
 
             d += modifier.DISTANCE;
 
@@ -87,13 +86,13 @@ public class AttackAction extends Action {
 //                throw new Exception();
 //            }
 //
-//            this.modifiers = new Modifier[distances.size()];
+//            this.modifiers = new AttackModifier[distances.size()];
 //
 //            if (modifiers.length > 0) {
 //
-//                modifiers[0] = new Modifier((int) distances.get(0), (int) percentages.get(0));
+//                modifiers[0] = new AttackModifier((int) distances.get(0), (int) percentages.get(0));
 //                for (int i = 1; i < modifiers.length; ++i) {
-//                    modifiers[i] = new Modifier((int) distances.get(i), (int) percentages.get(i));
+//                    modifiers[i] = new AttackModifier((int) distances.get(i), (int) percentages.get(i));
 //                }
 //            }
 //

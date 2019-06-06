@@ -26,6 +26,9 @@ public class Entity {
         this.name = name;
         boostAttack = new LinkedList<>();
         boostDefense = new LinkedList<>();
+
+        this.position = 0;
+        this.id = -1;
     }
 
     public int getId() {
@@ -72,7 +75,7 @@ public class Entity {
     public boolean damage(int amount) {
         if (amount <= 0) { return false; }
 
-        health.changeStat(amount);
+        health.changeStat(-amount);
         return true;
     }
 

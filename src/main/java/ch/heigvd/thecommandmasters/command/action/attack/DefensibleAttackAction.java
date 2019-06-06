@@ -4,7 +4,7 @@ import ch.heigvd.thecommandmasters.Character.Entity;
 
 public class DefensibleAttackAction extends AttackAction {
 
-    public DefensibleAttackAction(Entity caster, Entity entity, int percentage, Modifier[] modifiers) {
+    public DefensibleAttackAction(Entity caster, Entity entity, int percentage, AttackModifier[] modifiers) {
         super(caster, entity, percentage, modifiers);
     }
 
