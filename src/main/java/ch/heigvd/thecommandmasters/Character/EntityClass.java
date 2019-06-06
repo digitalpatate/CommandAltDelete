@@ -4,24 +4,25 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class EntityClass implements Displayer{
+public class EntityClass{
 
     private JSONObject jsonObject;
+    private Image image;
 
-    public EntityClass(File fileClass){
+    public EntityClass(File fileClass) {
 
         JSONParser parser = new JSONParser();
 
         try {
-            jsonObject = (JSONObject)parser.parse(new FileReader(fileClass));
+            jsonObject = (JSONObject) parser.parse(new FileReader(fileClass));
+            image = new ImageIcon((String) jsonObject.get("image")).getImage();
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -32,40 +33,32 @@ public class EntityClass implements Displayer{
         }
     }
 
-    public Entity createEntity(){
+    public Entity createEntity() {
         return new Entity(getHealth(), getEnergy(), getPower(), getDefence(), this.toString());
     }
 
-    public int getHealth(){
-        return (int)jsonObject.get("health");
+    public int getHealth() {
+        return Integer.parseInt(jsonObject.get("health").toString());
     }
 
-    public int getPower(){
-        return (int)jsonObject.get("power");
+    public int getPower() {
+        return Integer.parseInt(jsonObject.get("power").toString());
     }
 
-    public int getDefence(){
-        return (int)jsonObject.get("Defence");
+    public int getDefence() {
+        return Integer.parseInt(jsonObject.get("Defence").toString());
     }
 
-    public int getEnergy() { return (int)jsonObject.get("energy"); }
+    public int getEnergy() {
+        return Integer.parseInt(jsonObject.get("energy").toString());
+    }
+
+    public Image getImage() {
+        return image;
+    }
 
     @Override
-    public String toString(){
-        return (String)jsonObject.get("class");
-    }
-
-    @Override
-    public JLabel getImage() {
-        JLabel label = null;
-
-        try {
-            BufferedImage image = ImageIO.read(new File((String)jsonObject.get("image")));
-            label = new JLabel(new ImageIcon(image));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return label;
+    public String toString() {
+        return jsonObject.get("health").toString();
     }
 }
