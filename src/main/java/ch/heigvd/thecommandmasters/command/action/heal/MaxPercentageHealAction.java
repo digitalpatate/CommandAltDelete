@@ -2,9 +2,9 @@ package ch.heigvd.thecommandmasters.command.action.heal;
 
 import ch.heigvd.thecommandmasters.Character.Entity;
 
-public class MaxPercentageHealthAction extends HealAction {
+public class MaxPercentageHealAction extends HealAction {
 
-    public MaxPercentageHealthAction(Entity entity, int value) {
+    public MaxPercentageHealAction(Entity entity, int value) {
         super(entity, value);
     }
 

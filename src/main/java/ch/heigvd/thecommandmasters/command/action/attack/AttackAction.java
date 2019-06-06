@@ -21,7 +21,7 @@ public class AttackAction extends Action {
     @Override
     final public void execute() {
 
-        damage = Math.max(calculateDamage(), 0);
+        damage = calculateDamage();
 
         if (entity.damage(damage)) {
 
