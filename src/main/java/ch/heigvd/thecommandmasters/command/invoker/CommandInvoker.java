@@ -41,6 +41,13 @@ public class CommandInvoker {
     }
 
     /**
+     * Resets the invoker. Will be ready to set entities commands.
+     */
+    public void reset() {
+        java.util.Arrays.fill(invokers, null);
+    }
+
+    /**
      * Checks if all the entities have their commands set up.
      * @return true if ready.
      */
@@ -58,6 +65,11 @@ public class CommandInvoker {
      * @return true if finished.
      */
     public boolean hasFinished() {
+
+        if (!isReady()) {
+            return false;
+        }
+
         for (int i = 0; i < invokers.length; ++i) {
             if (invokers[i].hasNext()) {
                 return false;
