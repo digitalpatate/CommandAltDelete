@@ -20,6 +20,7 @@ public class AttackAction extends Action {
     private Entity caster;
     private final int DEFAULT_PERCENTAGE;
     private Modifier[] modifiers;
+    private int lastDamage = 0;
 
     public AttackAction(Entity caster, Entity entity, JSONObject data) {
         super(2, entity);
@@ -53,13 +54,12 @@ public class AttackAction extends Action {
     @Override
     public void execute() {
         // TODO: remember effective damage
-        getEntity().damage(caster.getPower());
+        getEntity().damage(caster.attack());
     }
 
     @Override
     public void undo() {
-        // TODO: heal effective damage
-        getEntity().heal(caster.getPower());
+        getEntity().heal(lastDamage);
     }
 
     private int calculateDamage(int power, int distance) {

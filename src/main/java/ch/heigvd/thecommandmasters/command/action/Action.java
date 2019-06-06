@@ -3,10 +3,14 @@ package ch.heigvd.thecommandmasters.command.action;
 import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.command.Command;
 
+import java.util.logging.Logger;
+
 /**
  * Represents a command that uses en entity to execute or undo itself.
  */
 public abstract class Action extends Command {
+
+    static final Logger LOG = Logger.getLogger(Command.class.getSimpleName());
 
     private Entity entity;
 

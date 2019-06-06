@@ -3,26 +3,20 @@ package ch.heigvd.thecommandmasters.Stat;
 public class StatEffect {
     int duration;
     int value;
-    String name;
-    Stats stat;
-    StatsType st;
+    Stats stat = null;
+    StatsType st = null;
 
 
     /**
      * Constructor
      * @param value
      * @param duration
-     * @param name
-     * @param stat
      */
-    StatEffect(int value, int duration, String name, Stats stat, StatsType st){
+    public StatEffect(int value, int duration){
         this.value    = value;
         this.duration = duration;
-        this.name     = name;
-        this.stat     = stat;
 
     }
-
 
     /**
      * the method use the method of the class stat for increase the stat
@@ -43,5 +37,4 @@ public class StatEffect {
     public int getValue(){
         return value;
     }
-
 }

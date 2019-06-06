@@ -8,8 +8,9 @@ public class MovementAction extends Action {
     private Map map;
     private int movement;
 
-    public MovementAction(Entity entity, int movement) {
+    public MovementAction(Entity entity, Map map, int movement) {
         super(1, entity);
+        this.map = map;
         this.movement = movement;
     }
 
@@ -20,6 +21,6 @@ public class MovementAction extends Action {
 
     @Override
     public void undo() {
-        map.move(getEntity(), movement);
+        map.move(getEntity(), -movement);
     }
 }

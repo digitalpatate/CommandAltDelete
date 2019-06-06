@@ -2,67 +2,44 @@ package ch.heigvd.thecommandmasters.Stat;
 
 
 public class Boost {
-    String name;
-    int value;
-    int duration;
-    Feature feature;
-    BoostType bt;
+
+    private int value;
+    private int duration;
+    private BoostType type;
 
     /**
      * Constructor
-     * @param feature
-     * @param name
-     * @param valeur
-     * @param duree
+     *
+     * @param value
+     * @param duration
+     * @param type
      */
-    Boost(Feature feature, String name, int valeur, int duree,BoostType bt){
-        this.name   = name;
-        this.duration  = duration;
+    public Boost(int value, int duration, BoostType type) {
         this.value = value;
-        this.feature = feature;
-        this.bt = bt;
+        this.duration = duration;
+        this.type = type;
     }
-
-
 
     /**
      * reduce the duration when the entity lose health or attack
      */
-    public void reduceDuration(){
-        if(duration <= 1) {
+    public void reduceDuration() {
+        if (duration <= 1) {
             duration = 0;
-        }
-        else{
+        } else {
             duration--;
         }
     }
 
-    /**
-     * increaseBoot, create the new feature boosted
-     * @return
-     */
-    Feature increaseBoot(){
-        Feature f = new Feature(feature.getValue() + value);
-        return f;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
-    public int getDuration(){
+    public int getDuration() {
         return duration;
     }
 
-    public Feature getFeature(){
-        return feature;
-    }
-
-    public BoostType getBt(){
-        return bt;
+    public BoostType getType() {
+        return type;
     }
 }

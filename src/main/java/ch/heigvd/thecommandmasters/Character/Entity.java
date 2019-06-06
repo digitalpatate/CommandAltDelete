@@ -95,20 +95,28 @@ public class Entity {
         energy.update();
     }
 
-    public void applyHealth(StatEffect statEffect){
+    public void applyHealthEffect(StatEffect statEffect){
         health.addEffect(statEffect);
     }
 
-    public void applyEnergy(StatEffect statEffect){
-        energy.addEffect(statEffect);
+    public void removeHealthEffect(StatEffect statEffect){
+        health.removeEffect(statEffect);
     }
 
-    public void applyBoostDefense(Boost boost){
+    public void applyAttackBoost(Boost boost) {
+        boostAttack.add(boost);
+    }
+
+    public void removeAttackBoost(Boost boost) {
+        boostAttack.remove(boost);
+    }
+
+    public void applyDefenseBoost(Boost boost) {
         boostDefense.add(boost);
     }
 
-    public void applyBoost(Boost boost){
-        boostAttack.add(boost);
+    public void removeDefenseBoost(Boost boost) {
+        boostDefense.remove(boost);
     }
 
     public int getHealth(){

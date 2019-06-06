@@ -2,7 +2,7 @@ package ch.heigvd.thecommandmasters.command.action;
 
 import ch.heigvd.thecommandmasters.Character.Entity;
 
-public abstract class HealAction extends Action {
+public class HealAction extends Action {
 
     private int amount;
 

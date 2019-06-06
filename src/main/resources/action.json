@@ -1,0 +1,33 @@
+{
+  "name": "Heavy Swing",
+  "description": "Deals heavy damage up close while healing and pushing back the caster",
+  "priority": 5,
+  "actions": [
+    {
+      "type": "ATTACK",
+      "data": {
+        "default": 80,
+        "distances": [
+          3,
+          2
+        ],
+        "percentages": [
+          120,
+          100
+        ]
+      }
+    },
+    {
+      "type": "MAX_PERCENTAGE_HEAL",
+      "data": 20
+    },
+    {
+      "type": "HEAL",
+      "data": 10
+    },
+    {
+      "type": "MOVEMENT",
+      "data": -2
+    }
+  ]
+}

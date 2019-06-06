@@ -38,6 +38,10 @@ public class Stats {
         listStatsEffect.add(st);
     }
 
+    public void removeEffect(StatEffect st){
+        listStatsEffect.remove(st);
+    }
+
 
     /**
      * methode that get back the name
