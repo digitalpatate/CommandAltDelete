@@ -15,7 +15,6 @@ public class EntityPanel extends JPanel implements MouseListener {
 
     public EntityPanel(EntityClass ec) {
         this.entityClass = ec;
-        this.add(ec.getImage());
         setBackground(Color.BLUE);
         addMouseListener(this);
     }
@@ -48,5 +47,11 @@ public class EntityPanel extends JPanel implements MouseListener {
 
     public void addChoseListener(ChoseListener listener){
         choseListener = listener;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(entityClass.getImage(), 0, 0, getWidth()-40, getHeight()-40, null);
     }
 }
