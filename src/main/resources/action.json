@@ -2,32 +2,40 @@
   "name": "Heavy Swing",
   "description": "Deals heavy damage up close while healing and pushing back the caster",
   "priority": 5,
+  "cost": 100,
   "actions": [
     {
       "type": "ATTACK",
-      "data": {
-        "default": 80,
-        "distances": [
-          3,
-          2
-        ],
-        "percentages": [
-          120,
-          100
-        ]
-      }
-    },
-    {
-      "type": "MAX_PERCENTAGE_HEAL",
-      "data": 20
+      "attackType": 0,
+      "default": 80,
+      "modifiers": [
+        [3, 120],
+        [5, 100]
+      ]
     },
     {
       "type": "HEAL",
-      "data": 10
+      "healType": 0,
+      "value": 10
     },
     {
       "type": "MOVEMENT",
-      "data": -2
+      "targetSelf": true,
+      "value": 2
+    },
+    {
+      "type": "BOOST",
+      "boostType": 0,
+      "targetSelf": true,
+      "value": 10,
+      "duration": 2
+    },
+    {
+      "type": "STAT_EFFECT",
+      "statEffectType": 0,
+      "targetSelf": true,
+      "value": 10,
+      "duration": 2
     }
   ]
 }
