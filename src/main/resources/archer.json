@@ -1,0 +1,101 @@
+{
+  "class": "Archer",
+  "power": 10,
+  "health": 100,
+  "energy": 100,
+  "defence": 10,
+  "image": "image/archer.png",
+  "technique": [
+    {
+      "name": "poisoned arrow",
+      "description": "none",
+      "priority": 10,
+      "cost": 25,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 80,
+          "modifiers": [
+            [3, 120],
+            [6, 100]
+          ]
+        },
+        {
+          "type": "MOVEMENT",
+          "targetSelf": true,
+          "value": -1
+        },
+        {
+          "type": "STAT_EFFECT",
+          "statEffectType": 0,
+          "targetSelf": false,
+          "value": -10,
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "name": "powerful arrow",
+      "description": "none",
+      "priority": 7,
+      "cost": 30,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 70,
+          "modifiers": [
+            [2, 140],
+            [4, 110]
+          ]
+        },
+        {
+          "type": "MOVEMENT",
+          "targetSelf": false,
+          "value": -3
+        }
+      ]
+    },
+    {
+      "name": "piercing arrow",
+      "description": "none",
+      "priority": 4,
+      "cost": 20,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 1,
+          "default": 100,
+          "modifiers": []
+        }
+      ]
+    },
+    {
+      "name": "arrow rain",
+      "description": "none",
+      "priority": 20,
+      "cost": 100,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 100,
+          "modifiers": [
+            [1,200],
+            [2,180],
+            [3,150],
+            [4,120]
+          ]
+        },
+        {
+          "type": "BOOST",
+          "boostType": 1,
+          "targetSelf": true,
+          "value": 10,
+          "duration": 3
+        }
+      ]
+    }
+  ]
+}

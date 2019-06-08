@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Advanced 1",
+    "description": "",
+    "priority": 1,
+    "cost": 5,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 2",
+    "description": "",
+    "priority": 2,
+    "cost": 7,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": 2
+      }
+    ]
+  },
+  {
+    "name": "Advanced 3",
+    "description": "",
+    "priority": 3,
+    "cost": 10,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": 3
+      }
+    ]
+  },
+  {
+    "name": "Remote of 1",
+    "description": "",
+    "priority": 2,
+    "cost": 5,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": -1
+      }
+    ]
+  },
+  {
+    "name": "Remote of 2",
+    "description": "",
+    "priority": 3,
+    "cost": 7,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": -2
+      }
+    ]
+  },
+  {
+    "name": "Remote of 3",
+    "description": "",
+    "priority": 4,
+    "cost": 10,
+    "actions": [
+      {
+        "type": "MOVEMENT",
+        "targetSelf": true,
+        "value": -3
+      }
+    ]
+  },
+  {
+    "name": "Stabbing attack",
+    "description": "",
+    "priority": 5,
+    "cost": 10,
+    "actions": [
+      {
+        "type": "ATTACK",
+        "attackType": 0,
+        "default": 50,
+        "modifiers": [
+          [1,120],
+          [5,75]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Care",
+    "description": "",
+    "priority": 5,
+    "cost": 10,
+    "actions": [
+      {
+        "type": "HEAL",
+        "healType": 0,
+        "value": 10
+      }
+    ]
+  }
+]

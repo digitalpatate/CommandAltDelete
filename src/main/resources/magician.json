@@ -1,0 +1,129 @@
+{
+  "class": "Magician",
+  "power": 15,
+  "health": 50,
+  "energy": 100,
+  "Defence": 5,
+  "image": "image/magician.png",
+  "technique": [
+    {
+      "name": "Fireball",
+      "description": "none",
+      "priority": 10,
+      "cost": 20,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 80,
+          "modifiers": [
+            [2, 120],
+            [7, 100]
+          ]
+        },
+        {
+          "type": "STAT_EFFECT",
+          "statEffectType": 0,
+          "targetSelf": false,
+          "value": -15,
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "name": "Divine light",
+      "description": "none",
+      "priority": 10,
+      "cost": 25,
+      "actions": [
+        {
+          "type": "HEAL",
+          "healType": 1,
+          "value": 20
+        },
+        {
+          "type": "BOOST",
+          "boostType": 0,
+          "targetSelf": true,
+          "value": 10,
+          "duration": 2
+        },
+        {
+          "type": "BOOST",
+          "boostType": 1,
+          "targetSelf": true,
+          "value": 10,
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "name": "punishment of gods",
+      "description": "none",
+      "priority": 15,
+      "cost": 25,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 70,
+          "modifiers": [
+            [3, 100]
+          ]
+        },
+        {
+          "type": "BOOST",
+          "boostType": 0,
+          "targetSelf": false,
+          "value": 10,
+          "duration": 2
+        },
+        {
+          "type": "BOOST",
+          "boostType": 1,
+          "targetSelf": false,
+          "value": 10,
+          "duration": 2
+        }
+      ]
+    },
+    {
+      "name": "Grace of the gods",
+      "description": "none",
+      "priority": 20,
+      "cost": 100,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 100,
+          "modifiers": [
+            [2, 200],
+            [4, 150]
+          ]
+        },
+        {
+          "type": "STAT_EFFECT",
+          "statEffectType": 0,
+          "targetSelf": false,
+          "value": -20,
+          "duration": 10
+        },
+        {
+          "type": "STAT_EFFECT",
+          "statEffectType": 0,
+          "targetSelf": true,
+          "value": 20,
+          "duration": 10
+        },
+        {
+          "type": "BOOST",
+          "boostType": 1,
+          "targetSelf": true,
+          "value": 20,
+          "duration": 5
+        }
+      ]
+    }
+  ]
+}

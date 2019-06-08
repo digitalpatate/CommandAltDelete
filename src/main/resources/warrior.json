@@ -1,0 +1,139 @@
+{
+  "class": "Warrior",
+  "power": 10,
+  "health": 70,
+  "energy": 100,
+  "Defence": 20,
+  "image": "image/warrior.png",
+  "technique": [
+    {
+      "name": "Quick blow",
+      "description": "none",
+      "priority": 10,
+      "cost": 20,
+      "actions": [
+        {
+          "type": "MOVEMENT",
+          "targetSelf": true,
+          "value": 2
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 75,
+          "modifiers": [
+            [2, 120]
+          ]
+        },
+        {
+          "type": "MOVEMENT",
+          "targetSelf": true,
+          "value": -2
+        }
+      ]
+    },
+    {
+      "name": "enhancement",
+      "description": "none",
+      "priority": 5,
+      "cost": 25,
+      "actions": [
+        {
+          "type": "HEAL",
+          "healType": 1,
+          "value": -10
+        },
+        {
+          "type": "BOOST",
+          "boostType": 0,
+          "targetSelf": true,
+          "value": 10,
+          "duration": 3
+        },
+        {
+          "type": "BOOST",
+          "boostType": 1,
+          "targetSelf": true,
+          "value": 20,
+          "duration": 3
+        }
+      ]
+    },
+    {
+      "name": "Wide sword shot",
+      "description": "none",
+      "priority": 10,
+      "cost": 25,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 80,
+          "modifiers": [
+            [2, 140],
+            [5, 120],
+            [7, 100]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supreme blow of Gilgamesh",
+      "description": "none",
+      "priority": 25,
+      "cost": 100,
+      "actions": [
+        {
+          "type": "ATTACK",
+          "attackType": 1,
+          "default": 50,
+          "modifiers": [
+            [1,100],
+            [2,75]
+          ]
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 50,
+          "modifiers": [
+            [2,100],
+            [4,75]
+          ]
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 100,
+          "modifiers": []
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 50,
+          "modifiers": [
+            [1,100],
+            [2,75]
+          ]
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 1,
+          "default": 50,
+          "modifiers": [
+            [1,100],
+            [2,75]
+          ]
+        },
+        {
+          "type": "ATTACK",
+          "attackType": 0,
+          "default": 100,
+          "modifiers": [
+            [1,200]
+          ]
+        }
+      ]
+    }
+  ]
+}
