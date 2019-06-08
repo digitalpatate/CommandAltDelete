@@ -4,7 +4,7 @@
   "health": 100,
   "energy": 100,
   "defence": 10,
-  "image": "image/archer.png",
+  "image": "character/image/archer.png",
   "technique": [
     {
       "name": "poisoned arrow",

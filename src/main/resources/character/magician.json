@@ -4,7 +4,7 @@
   "health": 50,
   "energy": 100,
   "Defence": 5,
-  "image": "image/magician.png",
+  "image": "character/image/magician.png",
   "technique": [
     {
       "name": "Fireball",

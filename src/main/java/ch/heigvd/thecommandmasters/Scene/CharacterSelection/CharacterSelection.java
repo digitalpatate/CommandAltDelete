@@ -30,12 +30,12 @@ public class CharacterSelection extends JPanel{
 
     private void load() {
         this.characters = new LinkedList<>();
-        File repertoire = new File("./");
-        String liste[] = repertoire.list((x,y) -> y.endsWith(".JSON") ? true : false);
+        File repertoire = new File("./character");
+        String liste[] = repertoire.list((x,y) -> y.endsWith(".json") ? true : false);
 
         if(liste != null){
             for(String s : liste)
-                characters.add(new EntityClass(new File(s)));
+                characters.add(new EntityClass(new File(repertoire + "/" + s), new File("baseAction.json")));
         }
     }
 

@@ -1,9 +1,6 @@
 package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
-import com.sun.istack.internal.NotNull;
-
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Entity {
@@ -18,6 +15,14 @@ public class Entity {
     private LinkedList<Boost> boostAttack;
     private LinkedList<Boost> boostDefense;
 
+    /**
+     * Constructeur
+     * @param health Maximum life of the character
+     * @param energy Maximum Energy of the character
+     * @param power Character's power
+     * @param Defense Defending the character
+     * @param name Character's name
+     */
     public Entity(int health, int energy, int power, int Defense, String name) {
         this.health = new Stats(health, "Health");
         this.energy = new Stats(energy, "Energy");
@@ -31,14 +36,29 @@ public class Entity {
         this.id = -1;
     }
 
+    /**
+     * indicates the character ID
+     *
+     * @return Character ID
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * indicates the position of the character
+     *
+     * @return The position of the character
+     */
     public int getPosition() {
         return position;
     }
 
+    /**
+     * indicates the name of the character
+     *
+     * @return The name of the character
+     */
     public String getName() {
         return name;
     }
@@ -47,10 +67,20 @@ public class Entity {
         this.id = id;
     }
 
+    /**
+     * Changes the position of the character
+     *
+     * @param position The new position of the character
+     */
     public void setPosition(int position) {
         this.position = position;
     }
 
+    /**
+     * Move the position of the character
+     *
+     * @param amount the number of boxes to advance the character
+     */
     public void move(int amount) {
         position += amount;
     }
@@ -177,10 +207,19 @@ public class Entity {
         defense.removeBoost(boost);
     }
 
+    /**
+     * indicates the current life of the character
+     *
+     * @return the current life
+     */
     public int getHealth() {
         return health.getValue();
     }
 
+    /**
+     * indicates the maximum life of the character
+     * @return the maximum life
+     */
     public int getMaxHealth() {
         return health.MAX;
     }

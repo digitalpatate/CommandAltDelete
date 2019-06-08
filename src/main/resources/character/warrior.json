@@ -4,7 +4,7 @@
   "health": 70,
   "energy": 100,
   "Defence": 20,
-  "image": "image/warrior.png",
+  "image": "character/image/warrior.png",
   "technique": [
     {
       "name": "Quick blow",
