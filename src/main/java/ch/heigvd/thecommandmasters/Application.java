@@ -1,13 +1,8 @@
 package ch.heigvd.thecommandmasters;
 
-import ch.heigvd.thecommandmasters.Character.EntityClass;
-import ch.heigvd.thecommandmasters.Game.GameLogic;
-import ch.heigvd.thecommandmasters.Scene.CharacterSelection.CharacterSelection;
-import ch.heigvd.thecommandmasters.Scene.Game.GameScene;
 import ch.heigvd.thecommandmasters.state.CharacterSelectionState;
 import ch.heigvd.thecommandmasters.state.Context;
 import ch.heigvd.thecommandmasters.state.GameState;
-import ch.heigvd.thecommandmasters.state.State;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,13 +33,6 @@ public class Application extends JFrame implements EventListener {
 
         selectPlayer2State = new CharacterSelectionState(gameState);
         selectPlayer1State = new CharacterSelectionState(selectPlayer2State);
-
-
-
-
-
-
-
         context.setState(selectPlayer1State);
     }
     private void initUI() {

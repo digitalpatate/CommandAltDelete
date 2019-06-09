@@ -2,9 +2,11 @@ package ch.heigvd.thecommandmasters.Scene.Game;
 
 import ch.heigvd.thecommandmasters.Scene.Game.menu.CommandSelectionPanel;
 import ch.heigvd.thecommandmasters.Scene.Game.menu.SelectedCommandPanel;
+import ch.heigvd.thecommandmasters.command.Command;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class GameScene extends JPanel {
     Dimension dimension;
@@ -48,5 +50,12 @@ public class GameScene extends JPanel {
         c.weightx = 1;
         c.weighty = 1;
         add(selectedCommandPanel, c);
+    }
+
+    public void updateCommandSelectionPanel(List<Command> commands) {
+        comandSelectionPanel.updateContent(commands);
+        comandSelectionPanel.addCommandListener(command -> {
+            selectedCommandPanel.addCommandToList(command.getCommand());
+        });
     }
 }
