@@ -132,12 +132,14 @@ public class EntityClass{
                 techniqueActionList.add(createCommand(yourSelf, opponent, map, technique, (JSONObject)actions.get(j)));
             }
 
-            if(techniqueActionList.size() == 1){
-                commands.addAll(techniqueActionList);
-            } else{
-                int priority = Integer.parseInt(technique.get("priority").toString());
-                commands.add(new MacroCommand(priority, techniqueActionList));
-            }
+            int priority = Integer.parseInt(technique.get("priority").toString());
+            int cost = (int) (long) technique.get("cost");
+
+            Command command = new MacroCommand(priority, cost, techniqueActionList);
+            command.name = (String) technique.get("name");
+            command.description = (String) technique.get("description");
+
+            commands.add(command);
         }
 
         return commands;
@@ -146,21 +148,21 @@ public class EntityClass{
     private Command createCommand(Entity yourShelf, Entity opponent, Map map, JSONObject info, JSONObject action){
         switch ((String)action.get("type")){
             case "ATTACK":
-                return createCommandAttack(yourShelf, opponent, map, info, action);
+                return createCommandAttack(yourShelf, opponent, map, action);
             case "HEAL":
-                return createCommandHeal(yourShelf, info, action);
+                return createCommandHeal(yourShelf, action);
             case "MOVEMENT":
-                return (boolean)action.get("targetSelf") ? createCommandMovement(yourShelf, map, info, action) : createCommandMovement(opponent, map, info, action);
+                return (boolean)action.get("targetSelf") ? createCommandMovement(yourShelf, map, action) : createCommandMovement(opponent, map, action);
             case "BOOST":
-                return (boolean)action.get("targetSelf") ?  createCommandBoost(yourShelf, info, action) : createCommandBoost(opponent, info, action);
+                return (boolean)action.get("targetSelf") ?  createCommandBoost(yourShelf, action) : createCommandBoost(opponent, action);
             case "STAT_EFFECT":
-                return (boolean)action.get("targetSelf") ?  createCommandStateffect(yourShelf, info, action) : createCommandStateffect(opponent, info, action);
+                return (boolean)action.get("targetSelf") ?  createCommandStateffect(yourShelf, action) : createCommandStateffect(opponent, action);
             default:
                 return null;
         }
     }
 
-    private Command createCommandAttack(Entity yourShelf, Entity opponent, Map map, JSONObject info, JSONObject action) {
+    private Command createCommandAttack(Entity yourShelf, Entity opponent, Map map, JSONObject action) {
 
         JSONArray modifiers = (JSONArray)action.get("modifiers");
         AttackModifier[] attackModifierList = new AttackModifier[modifiers.size() + 1];
@@ -184,7 +186,7 @@ public class EntityClass{
         }
     }
 
-    private Command createCommandBoost(Entity e, JSONObject info, JSONObject action){
+    private Command createCommandBoost(Entity e, JSONObject action){
 
         int value = Integer.parseInt(action.get("value").toString());
         int duration = Integer.parseInt(action.get("duration").toString());
@@ -199,7 +201,7 @@ public class EntityClass{
         }
     }
 
-    private Command createCommandHeal(Entity e, JSONObject info, JSONObject action){
+    private Command createCommandHeal(Entity e, JSONObject action){
         int value = Integer.parseInt(action.get("value").toString());
 
         switch (Integer.parseInt(action.get("healType").toString())){
@@ -214,20 +216,19 @@ public class EntityClass{
         }
     }
 
-    private Command createCommandStateffect(Entity e, JSONObject info, JSONObject action){
-        int priority = Integer.parseInt(info.get("priority").toString());
+    private Command createCommandStateffect(Entity e, JSONObject action){
         int value = Integer.parseInt(action.get("value").toString());
         int duration = Integer.parseInt(action.get("duration").toString());
 
         switch (Integer.parseInt(action.get("statEffectType").toString())){
             case 0:
-                return new HealthEffectAction(priority, e, value,duration);
+                return new HealthEffectAction(e, value,duration);
             default:
                 return null;
         }
     }
 
-    private Command createCommandMovement(Entity e, Map map, JSONObject info, JSONObject action){
+    private Command createCommandMovement(Entity e, Map map, JSONObject action){
         int value = Integer.parseInt(action.get("value").toString());
 
         return new MovementAction(e, map, value);

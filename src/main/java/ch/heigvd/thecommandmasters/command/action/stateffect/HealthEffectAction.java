@@ -4,8 +4,12 @@ import ch.heigvd.thecommandmasters.Character.Entity;
 
 public class HealthEffectAction extends StatEffectAction {
 
-    public HealthEffectAction(int priority, Entity entity, int value, int duration) {
-        super(priority, entity, value, duration);
+    public HealthEffectAction(Entity entity, int value, int duration) {
+        super(entity, value, duration);
+    }
+
+    public HealthEffectAction(int priority, int cost, Entity entity, int value, int duration) {
+        super(priority, cost, entity, value, duration);
     }
 
     @Override

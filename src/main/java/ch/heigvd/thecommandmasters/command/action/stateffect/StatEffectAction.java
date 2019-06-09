@@ -10,8 +10,12 @@ public abstract class StatEffectAction extends Action {
     private final int duration;
     protected StatEffect statEffect = null;
 
-    public StatEffectAction(int priority, Entity entity, int value, int duration) {
-        super(priority, entity);
+    public StatEffectAction(Entity entity, int value, int duration) {
+        this(0, 0, entity, value, duration);
+    }
+
+    public StatEffectAction(int priority, int cost, Entity entity, int value, int duration) {
+        super(priority, cost, entity);
         this.value = value;
         this.duration = duration;
     }
