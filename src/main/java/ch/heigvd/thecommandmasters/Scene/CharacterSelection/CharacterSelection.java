@@ -15,12 +15,9 @@ public class CharacterSelection extends JPanel{
     LinkedList<EntityClass> characters;
     ChoseListener listener;
     public CharacterSelection(Dimension dimension) {
-
-        System.out.println(dimension);
         setPreferredSize(dimension);
         load();
         this.setLayout(new GridLayout(0,characters.size()));
-        setBackground(Color.BLACK);
         for(EntityClass e : characters){
             EntityPanel panel = new EntityPanel(e);
             add(panel);

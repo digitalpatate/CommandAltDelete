@@ -14,13 +14,15 @@ public class GameScene extends JPanel {
     SelectedCommandPanel selectedCommandPanel;
 
     public GameScene(Dimension dimension){
-
-        System.out.println("IN game");
         this.dimension = dimension;
+        
+        setPreferredSize(dimension);
+
 
         this.board = new Board();
         this.comandSelectionPanel = new CommandSelectionPanel();
         this.selectedCommandPanel = new SelectedCommandPanel();
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -34,20 +36,17 @@ public class GameScene extends JPanel {
 
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
+        c.weighty = 1;
         c.gridx = 1;
         c.gridy = 0;
         add(comandSelectionPanel, c);
 
         c.fill = GridBagConstraints.BOTH;
-        c.ipady = 40;      //make this component tall
         c.gridwidth = 2;
         c.gridx = 0;
         c.gridy = 1;
         c.weightx = 1;
         c.weighty = 1;
         add(selectedCommandPanel, c);
-
-
-        setPreferredSize(dimension);
     }
 }

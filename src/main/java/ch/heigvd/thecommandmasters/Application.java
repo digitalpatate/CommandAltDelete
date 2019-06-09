@@ -1,10 +1,17 @@
 package ch.heigvd.thecommandmasters;
 
+import ch.heigvd.thecommandmasters.Character.EntityClass;
+import ch.heigvd.thecommandmasters.Game.GameLogic;
 import ch.heigvd.thecommandmasters.Scene.CharacterSelection.CharacterSelection;
 import ch.heigvd.thecommandmasters.Scene.Game.GameScene;
+import ch.heigvd.thecommandmasters.state.CharacterSelectionState;
+import ch.heigvd.thecommandmasters.state.Context;
+import ch.heigvd.thecommandmasters.state.GameState;
+import ch.heigvd.thecommandmasters.state.State;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.EventListener;
 
 public class Application extends JFrame implements EventListener {
@@ -14,22 +21,31 @@ public class Application extends JFrame implements EventListener {
     JPanel contentPanel;
 
 
-    private Application(int windowsWidth, int windowsHeigth) {
+    CharacterSelectionState selectPlayer1State;
+    CharacterSelectionState selectPlayer2State;
+
+    GameState gameState;
+
+    Context context;
+
+
+    private Application(int windowsWidth, int windowsHeigth) throws InterruptedException, InvocationTargetException {
         this.dimension  = new Dimension(windowsWidth,windowsHeigth);
         initUI();
 
+        this.context = new Context(contentPanel);
+        gameState = new GameState();
 
-        CharacterSelection panel = new CharacterSelection(dimension);
-        contentPanel.add(panel);
-        panel.addChoseListener(e1 -> {
-            System.out.println(e1.getChosenOne());
-            GameScene gameScene = new GameScene(dimension);
+        selectPlayer2State = new CharacterSelectionState(gameState);
+        selectPlayer1State = new CharacterSelectionState(selectPlayer2State);
 
-            this.contentPanel.remove(panel);
-            this.contentPanel.add(gameScene);
-            this.contentPanel.revalidate();
-            this.contentPanel.repaint();
-        });
+
+
+
+
+
+
+        context.setState(selectPlayer1State);
     }
     private void initUI() {
 
@@ -47,7 +63,14 @@ public class Application extends JFrame implements EventListener {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            Application frame = new Application(1280,720);
+            Application frame = null;
+            try {
+                frame = new Application(1280,720);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
             frame.setVisible(true);
             frame.setLayout(null);
         });

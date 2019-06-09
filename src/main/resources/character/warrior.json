@@ -3,7 +3,7 @@
   "power": 10,
   "health": 70,
   "energy": 100,
-  "Defence": 20,
+  "defence": 20,
   "image": "character/image/warrior.png",
   "technique": [
     {

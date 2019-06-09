@@ -3,7 +3,7 @@
   "power": 15,
   "health": 50,
   "energy": 100,
-  "Defence": 5,
+  "defence": 5,
   "image": "character/image/magician.png",
   "technique": [
     {

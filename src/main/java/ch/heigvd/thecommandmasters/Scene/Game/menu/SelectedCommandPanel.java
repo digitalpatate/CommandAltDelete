@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class SelectedCommandPanel extends JPanel {
     public SelectedCommandPanel(){
+
         setBackground(Color.ORANGE);
     }
 }
