@@ -9,7 +9,7 @@ public class DummyCommand extends Command {
     }
 
     public DummyCommand(int priority, Value data) {
-        super(priority);
+        super(priority, );
         this.data = data;
     }
 

@@ -9,7 +9,11 @@ public class MovementAction extends Action {
     private int movement;
 
     public MovementAction(Entity entity, Map map, int movement) {
-        super(1, entity);
+        this(0, 0, entity, map, movement);
+    }
+
+    public MovementAction(int priority, int cost, Entity entity, Map map, int movement) {
+        super(priority, cost, entity);
         this.map = map;
         this.movement = movement;
     }

@@ -8,7 +8,11 @@ public class HealAction extends Action {
     protected final int value;
 
     public HealAction(Entity entity, int value) {
-        super(entity);
+        this(0, 0, entity, value);
+    }
+
+    public HealAction(int priority, int cost, Entity entity, int value) {
+        super(priority, cost, entity);
         this.value = value;
     }
 

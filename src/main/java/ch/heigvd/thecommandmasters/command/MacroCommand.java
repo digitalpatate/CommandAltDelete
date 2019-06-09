@@ -10,20 +10,21 @@ public class MacroCommand extends Command {
     private List<Command> commands;
 
     /**
-     * Constructor
+     * Constructor with priority and cost to zero.
      * @param commands list of sub-commands.
      */
     public MacroCommand(List<Command> commands) {
-        this(0, commands);
+        this(0, 0, commands);
     }
 
     /**
      * Constructor
      * @param priority command's priority.
+     * @param cost the command's cost
      * @param commands list of sub-commands.
      */
-    public MacroCommand(int priority, List<Command> commands) {
-        super(priority);
+    public MacroCommand(int priority, int cost, List<Command> commands) {
+        super(priority, cost);
         this.commands = commands;
     }
 

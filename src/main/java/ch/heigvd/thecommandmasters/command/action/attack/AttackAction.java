@@ -11,8 +11,14 @@ public class AttackAction extends Action {
 
     private int damage = 0;
 
-    public AttackAction(Entity caster, Entity entity, int percentage, AttackModifier[] modifiers) {
-        super(2, entity);
+    public AttackAction(Entity caster, Entity entity,
+                        int percentage, AttackModifier[] modifiers) {
+        this(0, 0, caster, entity, percentage, modifiers);
+    }
+
+    public AttackAction(int priority, int cost, Entity caster, Entity entity,
+                        int percentage, AttackModifier[] modifiers) {
+        super(priority, cost, entity);
         this.caster = caster;
         this.defaultPercentage = percentage;
         this.modifiers = modifiers;

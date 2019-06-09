@@ -9,6 +9,10 @@ public class DefenseBoostAction extends BoostAction {
         super(entity, value, duration);
     }
 
+    public DefenseBoostAction(int priority, int cost, Entity entity, int value, int duration) {
+        super(priority, cost, entity, value, duration);
+    }
+
     @Override
     public void execute() {
         createBoost(BoostType.DEFENSE);

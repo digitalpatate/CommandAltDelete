@@ -8,6 +8,10 @@ public class MaxPercentageHealAction extends HealAction {
         super(entity, value);
     }
 
+    public MaxPercentageHealAction(int priority, int cost, Entity entity, int value) {
+        super(priority, cost, entity, value);
+    }
+
     @Override
     protected int calculateHeal() {
         return entity.getMaxHealth() * value / 100;

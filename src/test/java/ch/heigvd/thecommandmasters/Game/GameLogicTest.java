@@ -41,7 +41,7 @@ public class GameLogicTest {
         LinkedList<Integer> order = new LinkedList<>();
 
         GameLogic game = new GameLogic(entityClass, entityClass, 10);
-        Command c1 = new Command(1) {
+        Command c1 = new Command(1, ) {
             @Override
             public void execute() {
                 order.add(0);
@@ -50,7 +50,7 @@ public class GameLogicTest {
             @Override
             public void undo() {}
         };
-        Command c2 = new Command(2) {
+        Command c2 = new Command(2, ) {
             @Override
             public void execute() {
                 order.add(1);

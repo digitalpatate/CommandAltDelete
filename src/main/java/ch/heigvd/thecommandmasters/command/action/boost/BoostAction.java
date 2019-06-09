@@ -12,7 +12,11 @@ public abstract class BoostAction extends Action {
     protected Boost boost = null;
 
     protected BoostAction(Entity entity, int value, int duration) {
-        super(entity);
+        this(0, 0, entity, value, duration);
+    }
+
+    protected BoostAction(int priority, int cost, Entity entity, int value, int duration) {
+        super(priority, cost, entity);
         this.value = value;
         this.duration = duration;
     }

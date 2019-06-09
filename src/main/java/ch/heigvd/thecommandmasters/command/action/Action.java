@@ -15,11 +15,11 @@ public abstract class Action extends Command {
     protected final Entity entity;
 
     /**
-     * Constructor.
+     * Constructor with priority and cost to zero.
      * @param entity action's entity.
      */
     public Action(Entity entity) {
-        this(0, entity);
+        this(0, 0, entity);
     }
 
     /**
@@ -27,8 +27,8 @@ public abstract class Action extends Command {
      * @param priority command's priority.
      * @param entity actions entity.
      */
-    public Action(int priority, Entity entity) {
-        super(priority);
+    public Action(int priority, int cost, Entity entity) {
+        super(priority, cost);
         this.entity = entity;
     }
 }
