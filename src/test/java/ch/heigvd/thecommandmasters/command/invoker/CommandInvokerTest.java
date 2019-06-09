@@ -146,7 +146,7 @@ public class CommandInvokerTest {
         invoker.invokeNext();
         invoker.invokeNext();
         invoker.invokeNext();
-        invoker.undoOpponentLast(1);
+        invoker.undoLastOf(0);
 
         Assertions.assertEquals(1, data0.value);
     }

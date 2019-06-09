@@ -125,16 +125,16 @@ public class CommandInvoker {
     }
 
     /**
-     * Undoes the last command of an entity's opponent.
+     * Undoes the last command of an entity.
      * @param entityId the id of the entity.
      */
-    public void undoOpponentLast(int entityId) {
+    public void undoLastOf(int entityId) {
 
         if (checkEntityId(entityId)) {
 
             for (int i : invocationOrder) {
 
-                if (i != entityId) {
+                if (i == entityId) {
                     invokers[i].undoLast();
                 }
             }

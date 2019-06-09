@@ -106,5 +106,17 @@
         "value": 10
       }
     ]
+  },
+  {
+    "name": "Undo",
+    "description": "Undo the last action of yout opponent.",
+    "priority": 2,
+    "cost": 15,
+    "actions": [
+      {
+        "type": "UNDO",
+        "targetSelf": false
+      }
+    ]
   }
 ]

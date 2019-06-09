@@ -2,6 +2,7 @@ package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Game.Map;
 import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.command.invoker.CommandInvoker;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +21,10 @@ public class CreateCommandTest {
         Entity e2 = ec.createEntity();
         Map map = new Map(20, e1, e2);
 
-        List<Command> c1 = ec.createCommands(e1, e2, map);
+        CommandInvoker invoker = new CommandInvoker(2);
 
-        Assertions.assertEquals(12, c1.size());
+        List<Command> c1 = ec.createCommands(e1, e2, map, invoker);
+
+        Assertions.assertEquals(13, c1.size());
     }
 }

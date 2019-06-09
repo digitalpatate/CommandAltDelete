@@ -3,6 +3,7 @@ package ch.heigvd.thecommandmasters.Game;
 import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.Character.EntityClass;
 import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.command.invoker.CommandInvoker;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ public class GameLogicTest {
         }
 
         @Override
-        public List<Command> createCommands(Entity yourSelf, Entity opponent, Map map) {
+        public List<Command> createCommands(Entity yourSelf, Entity opponent, Map map, CommandInvoker invoker) {
             return new ArrayList<>();
         }
     }

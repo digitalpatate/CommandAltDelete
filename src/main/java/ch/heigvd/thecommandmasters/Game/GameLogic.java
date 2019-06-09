@@ -20,10 +20,11 @@ public class GameLogic {
 
         map = new Map(mapSize, player1, player2);
 
-        player1.setCommands(classPlayer1.createCommands(player1, player2, map));
-        player2.setCommands(classPlayer1.createCommands(player2, player1, map));
-
         invoker = new CommandInvoker(2);
+
+        player1.setCommands(classPlayer1.createCommands(player1, player2, map, invoker));
+        player2.setCommands(classPlayer1.createCommands(player2, player1, map, invoker));
+
     }
 
     public void playRound(Command[] p1Commands, Command[] p2Commands) {
