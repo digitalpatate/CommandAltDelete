@@ -40,4 +40,28 @@ public class GameLogic {
 
         invoker.reset();
     }
+
+    public Entity getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(Entity player1) {
+        this.player1 = player1;
+    }
+
+    public Entity getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer2(Entity player2) {
+        this.player2 = player2;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
 }

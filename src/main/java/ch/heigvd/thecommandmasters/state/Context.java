@@ -20,7 +20,6 @@ public class Context {
 
     public void setState(State state){
         this.state = state;
-        System.out.println("Changing state");
         contentPanel.removeAll();
         state.doAction(this);
     }
