@@ -2,6 +2,8 @@ package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
 import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.displayer.Displayer;
+import ch.heigvd.thecommandmasters.displayer.DisplayerManager;
 
 import java.util.List;
 
@@ -102,7 +104,13 @@ public class Entity {
      * @param amount the number of boxes to advance the character
      */
     public void move(int amount) {
+
+        int current = position;
         position += amount;
+
+        if (DisplayerManager.hasDisplayer()) {
+            DisplayerManager.getDisplayer().showMovement(this, current, position);
+        }
     }
 
     /**
@@ -112,6 +120,10 @@ public class Entity {
      */
     public boolean heal(int amount) {
         if (amount <= 0)  { return false; }
+
+        if (DisplayerManager.hasDisplayer()) {
+            DisplayerManager.getDisplayer().showHeal(this, amount);
+        }
 
         health.changeStat(amount);
         return true;
@@ -125,38 +137,13 @@ public class Entity {
     public boolean damage(int amount) {
         if (amount <= 0) { return false; }
 
+        if (DisplayerManager.hasDisplayer()) {
+            DisplayerManager.getDisplayer().showDamage(this, amount);
+        }
+
         health.changeStat(-amount);
         return true;
     }
-
-//    public int attack() {
-//        int increaseDamage = 0;
-//        for (Boost b : boostAttack) {
-//            increaseDamage += b.getValue();
-//            b.reduceDuration();
-//        }
-//        return power.getValue() + increaseDamage;
-//    }
-
-//    private void update() {
-//        Iterator itDefense = boostDefense.iterator();
-//        while (itDefense.hasNext()) {
-//            Boost b = ((Boost) itDefense.next());
-//            if (b.getDuration() == 0) {
-//                itDefense.remove();
-//            }
-//        }
-//
-//        Iterator itAttack = boostAttack.iterator();
-//        while (itAttack.hasNext()) {
-//            Boost b = ((Boost) itAttack.next());
-//            if (b.getDuration() == 0) {
-//                itAttack.remove();
-//            }
-//        }
-//
-//        updateHealthEffects();
-//    }
 
     /**
      * Updates the stat effects attach to the health.
