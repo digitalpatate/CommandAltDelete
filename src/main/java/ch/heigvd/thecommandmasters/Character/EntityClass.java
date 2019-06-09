@@ -109,7 +109,7 @@ public class EntityClass{
         return image;
     }
 
-    public List<Command> getCommandClass(Entity yourSelf, Entity opponent, Map map){
+    public List<Command> createCommands(Entity yourSelf, Entity opponent, Map map){
         List<Command> commands = new ArrayList<>();
 
         JSONArray techniques = (JSONArray)jsonObject.get("technique");

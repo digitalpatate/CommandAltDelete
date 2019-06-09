@@ -1,27 +1,27 @@
 package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
-import java.util.LinkedList;
+import ch.heigvd.thecommandmasters.command.Command;
+
+import java.util.List;
 
 public class Entity {
 
-    private int id;
-    private String name;
-    private int position;
     private Stats health;
     private Stats energy;
     private Feature power;
     private Feature defense;
-    private LinkedList<Boost> boostAttack;
-    private LinkedList<Boost> boostDefense;
+    private String name;
+    private int id;
+    private int position;
+    private List<Command> commands;
 
     /**
-     * Constructeur
+     * Constructor
      * @param health Maximum life of the character
      * @param energy Maximum Energy of the character
      * @param power Character's power
      * @param Defense Defending the character
-     * @param name Character's name
      */
     public Entity(int health, int energy, int power, int Defense, String name) {
         this.health = new Stats(health, "Health");
@@ -29,11 +29,19 @@ public class Entity {
         this.power = new Feature(power, "Power");
         this.defense = new Feature(Defense, "Defense");
         this.name = name;
-        boostAttack = new LinkedList<>();
-        boostDefense = new LinkedList<>();
 
-        this.position = 0;
         this.id = -1;
+        this.position = 0;
+        this.commands = null;
+    }
+
+    /**
+     * Indicates the name of the character.
+     *
+     * @return The name of the character.
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -46,6 +54,15 @@ public class Entity {
     }
 
     /**
+     * Sets the id of the entity.
+     *
+     * @param id New id.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
      * indicates the position of the character
      *
      * @return The position of the character
@@ -55,25 +72,28 @@ public class Entity {
     }
 
     /**
-     * indicates the name of the character
-     *
-     * @return The name of the character
-     */
-    public String getName() {
-        return name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
      * Changes the position of the character
      *
      * @param position The new position of the character
      */
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    /**
+     * Gets the command list of the entity.
+     * @return Entity's commands.
+     */
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+    /**
+     * Sets the commands of the entity.
+     * @param commands New commands.
+     */
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
     }
 
     /**

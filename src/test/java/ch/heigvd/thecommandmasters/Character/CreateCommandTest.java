@@ -3,7 +3,6 @@ package ch.heigvd.thecommandmasters.Character;
 import ch.heigvd.thecommandmasters.Game.Map;
 import ch.heigvd.thecommandmasters.command.Command;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,9 +20,8 @@ public class CreateCommandTest {
         Entity e2 = ec.createEntity();
         Map map = new Map(20, e1, e2);
 
-        List<Command> c1 = ec.getCommandClass(e1, e2, map);
+        List<Command> c1 = ec.createCommands(e1, e2, map);
 
         Assertions.assertEquals(12, c1.size());
     }
-
 }
