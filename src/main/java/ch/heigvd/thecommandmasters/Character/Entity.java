@@ -2,7 +2,6 @@ package ch.heigvd.thecommandmasters.Character;
 
 import ch.heigvd.thecommandmasters.Stat.*;
 import ch.heigvd.thecommandmasters.command.Command;
-import ch.heigvd.thecommandmasters.displayer.Displayer;
 import ch.heigvd.thecommandmasters.displayer.DisplayerManager;
 
 import java.util.List;
@@ -20,10 +19,12 @@ public class Entity {
 
     /**
      * Constructor
-     * @param health Maximum life of the character
-     * @param energy Maximum Energy of the character
-     * @param power Character's power
+     *
+     * @param health  Maximum life of the character
+     * @param energy  Maximum Energy of the character
+     * @param power   Character's power
      * @param Defense Defending the character
+     * @param name    Character's name
      */
     public Entity(int health, int energy, int power, int Defense, String name) {
         this.health = new Stats(health, "Health");
@@ -84,6 +85,7 @@ public class Entity {
 
     /**
      * Gets the command list of the entity.
+     *
      * @return Entity's commands.
      */
     public List<Command> getCommands() {
@@ -92,6 +94,7 @@ public class Entity {
 
     /**
      * Sets the commands of the entity.
+     *
      * @param commands New commands.
      */
     public void setCommands(List<Command> commands) {
@@ -115,11 +118,14 @@ public class Entity {
 
     /**
      * Heals the entity.
+     *
      * @param amount The amount to heal. Should be positive.
      * @return True if the entity has been healed. False if amount was negative.
      */
     public boolean heal(int amount) {
-        if (amount <= 0)  { return false; }
+        if (amount <= 0) {
+            return false;
+        }
 
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showHeal(this, amount);
@@ -131,11 +137,14 @@ public class Entity {
 
     /**
      * Makes the entity receive damage
+     *
      * @param amount The amount of damage to receive. Should be positive.
      * @return True if the entity has been damaged. False if amount was negative.
      */
     public boolean damage(int amount) {
-        if (amount <= 0) { return false; }
+        if (amount <= 0) {
+            return false;
+        }
 
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showDamage(this, amount);
@@ -154,6 +163,7 @@ public class Entity {
 
     /**
      * Adds a stat effect to the health.
+     *
      * @param statEffect New stat effect.
      */
     public void addHealthEffect(StatEffect statEffect) {
@@ -162,6 +172,7 @@ public class Entity {
 
     /**
      * Removes a stat effect from the health.
+     *
      * @param statEffect Stats effect to remove.
      */
     public void removeHealthEffect(StatEffect statEffect) {
@@ -177,6 +188,7 @@ public class Entity {
 
     /**
      * Adds a boost to the power.
+     *
      * @param boost New boost.
      */
     public void addPowerBoost(Boost boost) {
@@ -185,6 +197,7 @@ public class Entity {
 
     /**
      * Removes a boost from the power.
+     *
      * @param boost Boost to remove.
      */
     public void removePowerBoost(Boost boost) {
@@ -200,6 +213,7 @@ public class Entity {
 
     /**
      * Adds a boost to the defense.
+     *
      * @param boost New boost.
      */
     public void addDefenseBoost(Boost boost) {
@@ -208,6 +222,7 @@ public class Entity {
 
     /**
      * Removes a boost from the power.
+     *
      * @param boost Boost to remove.
      */
     public void removeDefenseBoost(Boost boost) {
@@ -225,24 +240,45 @@ public class Entity {
 
     /**
      * indicates the maximum life of the character
+     *
      * @return the maximum life
      */
     public int getMaxHealth() {
         return health.MAX;
     }
 
+    /**
+     * Indicates the current energy of the character
+     *
+     * @return the current energy
+     */
     public int getEnergy() {
         return energy.getValue();
     }
 
+    /**
+     * indicates the maximum energy of the character
+     *
+     * @return the maximum energy
+     */
     public int getMaxEnergy() {
         return energy.MAX;
     }
 
+    /**
+     * indicates the current defense of the character
+     *
+     * @return the current defense
+     */
     public int getDefense() {
         return defense.getValue();
     }
 
+    /**
+     * indicates the current power of the character
+     *
+     * @return the current power
+     */
     public int getPower() {
         return power.getValue();
     }

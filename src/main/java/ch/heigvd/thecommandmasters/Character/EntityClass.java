@@ -40,6 +40,13 @@ public class EntityClass {
      *
      * @param fileClass The EntityClass file
      */
+
+    /**
+     * Constructor, Opens the EntityClass file with a JSONObject
+     *
+     * @param fileClass          The EntityClass file
+     * @param fileGenericCommand The Generics Command file
+     */
     public EntityClass(File fileClass, File fileGenericCommand) {
         JSONParser parser = new JSONParser();
 
@@ -111,6 +118,15 @@ public class EntityClass {
         return image;
     }
 
+    /**
+     * Creates all commands that can be used by this character
+     *
+     * @param yourSelf the entity create by this class
+     * @param opponent the opponent entity
+     * @param map      the game map
+     * @param invoker
+     * @return the list of usable commands
+     */
     public List<Command> createCommands(Entity yourSelf, Entity opponent, Map map, CommandInvoker invoker) {
         List<Command> commands = new ArrayList<>();
 
@@ -122,6 +138,16 @@ public class EntityClass {
         return commands;
     }
 
+    /**
+     * Creates all commands that can be used by this character from a JsonObject
+     *
+     * @param yourSelf  the entity create by this class
+     * @param opponent  the opponent entity
+     * @param map       the game map
+     * @param invoker
+     * @param jsonArray Json that contains the command information
+     * @return the list of usable commands
+     */
     private List<Command> createClassSpecificCommand(Entity yourSelf, Entity opponent, Map map,
                                                      CommandInvoker invoker, JSONArray jsonArray) {
         List<Command> commands = new ArrayList<>();
@@ -148,26 +174,45 @@ public class EntityClass {
         return commands;
     }
 
-    private Command createCommand(Entity yourShelf, Entity opponent, Map map, CommandInvoker invoker, JSONObject action) {
+    /**
+     * create a command depending on its type
+     *
+     * @param yourSelf the entity create by this class
+     * @param opponent the opponent entity
+     * @param map      the game map
+     * @param invoker
+     * @param action   command information
+     * @return the command creates
+     */
+    private Command createCommand(Entity yourSelf, Entity opponent, Map map, CommandInvoker invoker, JSONObject action) {
         switch ((String) action.get("type")) {
             case "ATTACK":
-                return createCommandAttack(yourShelf, opponent, map, action);
+                return createCommandAttack(yourSelf, opponent, map, action);
             case "HEAL":
-                return createCommandHeal(yourShelf, action);
+                return createCommandHeal(yourSelf, action);
             case "MOVEMENT":
-                return createCommandMovement((boolean) action.get("targetSelf") ? yourShelf : opponent, map, action);
+                return createCommandMovement((boolean) action.get("targetSelf") ? yourSelf : opponent, map, action);
             case "BOOST":
-                return createCommandBoost((boolean) action.get("targetSelf") ? yourShelf : opponent, action);
+                return createCommandBoost((boolean) action.get("targetSelf") ? yourSelf : opponent, action);
             case "STAT_EFFECT":
-                return createCommandStateffect((boolean) action.get("targetSelf") ? yourShelf : opponent, action);
+                return createCommandStateffect((boolean) action.get("targetSelf") ? yourSelf : opponent, action);
             case "UNDO":
-                return new UndoLastAction((boolean) action.get("targetSelf") ? yourShelf : opponent, invoker);
+                return new UndoLastAction((boolean) action.get("targetSelf") ? yourSelf : opponent, invoker);
             default:
                 return null;
         }
     }
 
-    private Command createCommandAttack(Entity yourShelf, Entity opponent, Map map, JSONObject action) {
+    /**
+     * create an attack command
+     *
+     * @param yourSelf the entity create by this class
+     * @param opponent the opponent entity
+     * @param map      the game map
+     * @param action   command information
+     * @return the command creates
+     */
+    private Command createCommandAttack(Entity yourSelf, Entity opponent, Map map, JSONObject action) {
 
         JSONArray modifiers = (JSONArray) action.get("modifiers");
         AttackModifier[] attackModifierList = new AttackModifier[modifiers.size() + 1];
@@ -183,14 +228,21 @@ public class EntityClass {
 
         switch (Integer.parseInt(action.get("attackType").toString())) {
             case 0:
-                return new AttackAction(yourShelf, opponent, defaut, attackModifierList);
+                return new AttackAction(yourSelf, opponent, defaut, attackModifierList);
             case 1:
-                return new DefensibleAttackAction(yourShelf, opponent, defaut, attackModifierList);
+                return new DefensibleAttackAction(yourSelf, opponent, defaut, attackModifierList);
             default:
                 return null;
         }
     }
 
+    /**
+     * create an boost command
+     *
+     * @param e      the affected entity
+     * @param action command information
+     * @return the command creates
+     */
     private Command createCommandBoost(Entity e, JSONObject action) {
 
         int value = Integer.parseInt(action.get("value").toString());
@@ -206,6 +258,13 @@ public class EntityClass {
         }
     }
 
+    /**
+     * create an heal command
+     *
+     * @param e      the affected entity
+     * @param action command information
+     * @return the command creates
+     */
     private Command createCommandHeal(Entity e, JSONObject action) {
         int value = Integer.parseInt(action.get("value").toString());
 
@@ -221,6 +280,13 @@ public class EntityClass {
         }
     }
 
+    /**
+     * create an state effect command
+     *
+     * @param e      the affected entity
+     * @param action command information
+     * @return the command creates
+     */
     private Command createCommandStateffect(Entity e, JSONObject action) {
         int value = Integer.parseInt(action.get("value").toString());
         int duration = Integer.parseInt(action.get("duration").toString());
@@ -233,6 +299,14 @@ public class EntityClass {
         }
     }
 
+    /**
+     * create an movement command
+     *
+     * @param e      the affected entity
+     * @param map    the game map
+     * @param action command information
+     * @return the command creates
+     */
     private Command createCommandMovement(Entity e, Map map, JSONObject action) {
         int value = Integer.parseInt(action.get("value").toString());
 
