@@ -1,18 +1,27 @@
 package ch.heigvd.thecommandmasters.state.game;
 
-
 public class PlayerRoundState implements GameState {
 
     GameState nextState;
+    int playerId;
 
-    public PlayerRoundState(GameState nextState) {
+    public PlayerRoundState(GameState nextState,int playerId) {
         this.nextState = nextState;
+        this.playerId = playerId;
     }
 
     @Override
     public void doAction(GameContext context) {
-        context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer1().getCommands());
+        System.out.println("Update "+ playerId);
+        if (playerId == 0)
+            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer1().getCommands());
+        else
+            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer2().getCommands());
+    }
 
-       //context.setState(nextState);
+
+        @Override
+    public GameState getNextState() {
+        return nextState;
     }
 }

@@ -59,6 +59,8 @@ public class Application extends JFrame implements EventListener {
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
+            frame.pack();
+
             frame.setVisible(true);
             frame.setLayout(null);
         });

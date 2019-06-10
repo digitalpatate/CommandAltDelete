@@ -16,16 +16,20 @@ public class CommandSelectionPanel extends JPanel {
         setBackground(Color.RED);
     }
 
-    public void updateContent(List<Command> commands) {
+    public void reset(List<Command> commands) {
+        removeAll();
+
         for (Command c : commands){
             CommandPanel commandPanel = new CommandPanel(c);
+            add(commandPanel);
             commandPanel.addCommandListener(e1 -> {
                 commandListener.action(new CommandSelected(c));
                 remove(commandPanel);
                 repaint();
             });
-            add(commandPanel);
         }
+        revalidate();
+        repaint();
     }
     public void addCommandListener(CommandListener listener){
         commandListener = listener;
