@@ -20,6 +20,9 @@ public class Feature {
         this.boosts = new LinkedList<>();
     }
 
+    /**
+     * update the boost
+     */
     public void updateBoosts() {
 
         Iterator<Boost> it = boosts.iterator();
@@ -34,10 +37,18 @@ public class Feature {
         }
     }
 
+    /**
+     * add one boost in the tab
+     * @param boost is one of the boost choose by the player
+     */
     public void addBoost(Boost boost) {
         boosts.add(boost);
     }
 
+    /**
+     * remove the boost in the tab
+     * @param boost is one of the boost choose by the player
+     */
     public void removeBoost(Boost boost) {
         boosts.remove(boost);
     }

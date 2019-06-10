@@ -4,19 +4,16 @@ public class Boost {
 
     private final int value;
     private int duration;
-    private BoostType type;
 
     /**
      * Constructor
      *
      * @param value
      * @param duration
-     * @param type
      */
-    public Boost(int value, int duration, BoostType type) {
+    public Boost(int value, int duration) {
         this.value = value;
         this.duration = duration;
-        this.type = type;
     }
 
     /**
@@ -30,15 +27,20 @@ public class Boost {
         }
     }
 
+    /**
+     *
+     * @return the value of the boost
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     *
+     * @return the duration of the boost
+     */
     public int getDuration() {
         return duration;
     }
 
-    public BoostType getType() {
-        return type;
-    }
 }

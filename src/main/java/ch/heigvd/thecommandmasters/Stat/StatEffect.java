@@ -4,7 +4,6 @@ public class StatEffect {
     int duration;
     int value;
     Stats stat = null;
-    StatsType st = null;
 
 
     /**
@@ -33,14 +32,25 @@ public class StatEffect {
         duration--;
     }
 
+    /**
+     * reduce the duration
+     */
     public void reduceDuration() {
         duration--;
     }
 
+    /**
+     *
+     * @return the value of the stat effect
+     */
     public int getValue(){
         return value;
     }
 
+    /**
+     *
+     * @return the duration of the effect
+     */
     public int getDuration() {
         return duration;
     }

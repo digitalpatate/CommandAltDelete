@@ -43,10 +43,18 @@ public class Stats {
         value = result;
     }
 
+    /**
+     * for adding effect in the tab
+     * @param st
+     */
     public void addEffect(StatEffect st){
         effects.add(st);
     }
 
+    /**
+     * remove effect in the tab
+     * @param st is one of the effect
+     */
     public void removeEffect(StatEffect st){
         effects.remove(st);
     }
@@ -59,10 +67,17 @@ public class Stats {
         return name;
     }
 
+    /**
+     *
+     * @return the value
+     */
     public int getValue(){
         return value;
     }
 
+    /**
+     * update the effect
+     */
     public void updateEffects() {
 
         Iterator<StatEffect> it = effects.iterator();

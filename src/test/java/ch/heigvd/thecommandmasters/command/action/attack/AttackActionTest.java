@@ -2,7 +2,6 @@ package ch.heigvd.thecommandmasters.command.action.attack;
 
 import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.Stat.Boost;
-import ch.heigvd.thecommandmasters.Stat.BoostType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,7 +64,7 @@ public class AttackActionTest {
     @Test
     void itReducesBoostsDurationWhenExecuted() {
 
-        jack.addPowerBoost(new Boost(10, 1, BoostType.ATTACK));
+        jack.addPowerBoost(new Boost(10, 1));
         Assertions.assertEquals(20, jack.getPower());
 
         action.execute();

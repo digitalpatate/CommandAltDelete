@@ -1,7 +1,6 @@
 package ch.heigvd.thecommandmasters.command.action.boost;
 
 import ch.heigvd.thecommandmasters.Character.Entity;
-import ch.heigvd.thecommandmasters.Stat.BoostType;
 
 public class AttackBoostAction extends BoostAction {
 
@@ -15,7 +14,7 @@ public class AttackBoostAction extends BoostAction {
 
     @Override
     public void execute() {
-        createBoost(BoostType.ATTACK);
+        createBoost();
         entity.addPowerBoost(boost);
     }
 
