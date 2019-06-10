@@ -32,13 +32,26 @@ public class GameLogic {
         invoker.setEntityCommands(0, p1Commands);
         invoker.setEntityCommands(1, p2Commands);
 
-        if (invoker.isReady()) {
+        if (invoker.isReady() && !hasWinner()) {
             while (!invoker.hasFinished()) {
                 invoker.invokeNext();
             }
         }
 
         invoker.reset();
+    }
+
+    public boolean hasWinner() {
+        return player1.getHealth() <= 0 || player2.getHealth() <= 0;
+    }
+
+    public Entity getWinner() {
+
+        if (!hasWinner()) {
+            return null;
+        }
+
+        return player1.getHealth() <= 0 ? player2 : player1;
     }
 
     public Entity getPlayer1() {
