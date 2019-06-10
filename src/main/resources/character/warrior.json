@@ -8,7 +8,7 @@
   "technique": [
     {
       "name": "Quick blow",
-      "description": "none",
+      "description": "Advanced two boxes, attack and back two boxes",
       "priority": 10,
       "cost": 20,
       "actions": [
@@ -34,7 +34,7 @@
     },
     {
       "name": "enhancement",
-      "description": "none",
+      "description": "Loses 10% of life, but gains 10 attacks and 20 defenses",
       "priority": 5,
       "cost": 25,
       "actions": [
@@ -61,7 +61,7 @@
     },
     {
       "name": "Wide sword shot",
-      "description": "none",
+      "description": "Large attack",
       "priority": 10,
       "cost": 25,
       "actions": [
@@ -79,7 +79,7 @@
     },
     {
       "name": "Supreme blow of Gilgamesh",
-      "description": "none",
+      "description": "attack 6 times",
       "priority": 25,
       "cost": 100,
       "actions": [

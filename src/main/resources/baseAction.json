@@ -1,7 +1,7 @@
 [
   {
     "name": "Advanced 1",
-    "description": "",
+    "description": "Advance one square",
     "priority": 1,
     "cost": 5,
     "actions": [
@@ -14,7 +14,7 @@
   },
   {
     "name": "Advanced 2",
-    "description": "",
+    "description": "Advance two squares",
     "priority": 2,
     "cost": 7,
     "actions": [
@@ -27,7 +27,7 @@
   },
   {
     "name": "Advanced 3",
-    "description": "",
+    "description": "Advance three squares",
     "priority": 3,
     "cost": 10,
     "actions": [
@@ -39,8 +39,8 @@
     ]
   },
   {
-    "name": "Remote of 1",
-    "description": "",
+    "name": "Retreat of 1",
+    "description": "back one boxe",
     "priority": 2,
     "cost": 5,
     "actions": [
@@ -52,8 +52,8 @@
     ]
   },
   {
-    "name": "Remote of 2",
-    "description": "",
+    "name": "Retreat of 2",
+    "description": "back two boxes",
     "priority": 3,
     "cost": 7,
     "actions": [
@@ -65,8 +65,8 @@
     ]
   },
   {
-    "name": "Remote of 3",
-    "description": "",
+    "name": "Retreat of 3",
+    "description": "back three boxes",
     "priority": 4,
     "cost": 10,
     "actions": [
@@ -79,7 +79,7 @@
   },
   {
     "name": "Stabbing attack",
-    "description": "",
+    "description": "dagger attack",
     "priority": 5,
     "cost": 10,
     "actions": [
@@ -96,7 +96,7 @@
   },
   {
     "name": "Care",
-    "description": "",
+    "description": "Heal about 10 this character",
     "priority": 5,
     "cost": 10,
     "actions": [
@@ -109,7 +109,7 @@
   },
   {
     "name": "Undo",
-    "description": "Undo the last action of yout opponent.",
+    "description": "Undo the last action of your opponent.",
     "priority": 2,
     "cost": 15,
     "actions": [
