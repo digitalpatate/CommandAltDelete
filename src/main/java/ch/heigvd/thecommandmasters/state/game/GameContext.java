@@ -50,7 +50,6 @@ public class GameContext {
     }
 
     public void setState(GameState state){
-        System.out.println("Changing state");
         this.state = state;
         state.doAction(this);
     }

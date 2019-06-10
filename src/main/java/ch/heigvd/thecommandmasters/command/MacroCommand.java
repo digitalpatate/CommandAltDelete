@@ -66,4 +66,12 @@ public class MacroCommand extends Command {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Command c : commands)
+            sb.append(c);
+        return sb.toString();
+    }
 }

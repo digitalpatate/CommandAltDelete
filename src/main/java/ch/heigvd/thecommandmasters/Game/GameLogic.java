@@ -23,7 +23,7 @@ public class GameLogic {
         invoker = new CommandInvoker(2);
 
         player1.setCommands(classPlayer1.createCommands(player1, player2, map, invoker));
-        player2.setCommands(classPlayer1.createCommands(player2, player1, map, invoker));
+        player2.setCommands(classPlayer2.createCommands(player2, player1, map, invoker));
 
     }
 

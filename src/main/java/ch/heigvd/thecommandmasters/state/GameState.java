@@ -17,9 +17,10 @@ public class GameState implements State {
 
     public GameState() {
         this.gameContext = null;
-        this.simulationState = new SimulationState(playerOneRoundState);
+        this.simulationState = new SimulationState();
         this.playerTwoRoundState = new PlayerRoundState(simulationState,1);
         this.playerOneRoundState = new PlayerRoundState(playerTwoRoundState,0);
+        simulationState.setNextState(playerOneRoundState);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class GameState implements State {
         this.gameContext = GameContext.getInsance();
         this.gameContext.setContentPanel(context.getContentPanel());
         this.gameContext.setGameLogic(gameLogic);
-        this.gameContext.setGameScene(new GameScene(context.getContentPanel().getPreferredSize()));
+        this.gameContext.setGameScene(new GameScene(context.getContentPanel().getPreferredSize(),12));
         gameContext.setState(playerOneRoundState);
     }
 }

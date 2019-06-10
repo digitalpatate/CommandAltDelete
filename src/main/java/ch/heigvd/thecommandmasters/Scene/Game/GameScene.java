@@ -17,13 +17,13 @@ public class GameScene extends JPanel {
     SelectedCommandPanel selectedCommandPanel;
     EndTurnPanel endTurnPanel;
 
-    public GameScene(Dimension dimension){
+    public GameScene(Dimension dimension, int mapSize){
         this.dimension = dimension;
 
         setPreferredSize(dimension);
 
 
-        this.board = new Board();
+        this.board = new Board(mapSize);
         this.comandSelectionPanel = new CommandSelectionPanel();
         this.selectedCommandPanel = new SelectedCommandPanel();
         this.endTurnPanel = new EndTurnPanel();
@@ -51,7 +51,10 @@ public class GameScene extends JPanel {
     }
 
     public void updateCommandSelectionPanel(List<Command> commands) {
+        System.out.println("updateCommandSelectionPanel");
+
         selectedCommandPanel.reset();
+
         comandSelectionPanel.reset(commands);
         comandSelectionPanel.addCommandListener(command -> {
             selectedCommandPanel.addCommandToList(command.getCommand());

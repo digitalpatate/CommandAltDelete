@@ -14,11 +14,11 @@ public class SelectedCommandPanel extends JPanel {
         setBackground(Color.ORANGE);
     }
     public void reset(){
-        removeAll();
+        System.out.println("selectedCommandPanel reset");
         commands.clear();
+        removeAll();
         revalidate();
         repaint();
-
     }
     public void update(){
         removeAll();
@@ -31,6 +31,7 @@ public class SelectedCommandPanel extends JPanel {
         repaint();
     }
     public void addCommandToList(Command c) {
+        System.out.println("Add command" +c.name);
         commands.add(c);
         JLabel commandName = new JLabel(c.name);
         add(commandName);
@@ -39,7 +40,6 @@ public class SelectedCommandPanel extends JPanel {
     }
 
     public LinkedList<Command> getCommands() {
-        System.out.println(commands);
         return commands;
     }
 

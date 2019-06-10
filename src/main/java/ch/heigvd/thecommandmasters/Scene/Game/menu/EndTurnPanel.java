@@ -17,6 +17,7 @@ public class EndTurnPanel extends JPanel {
         button.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("End turn");
                 getInsance().getSelectedCommands().add(getInsance().getGameScene().getSelectedCommandPanel().getCommands());
                 getInsance().setState(getInsance().getState().getNextState());
             }
