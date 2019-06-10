@@ -8,7 +8,7 @@
   "technique": [
     {
       "name": "poisoned arrow",
-      "description": "none",
+      "description": "attack, back one square and inflict poison",
       "priority": 10,
       "cost": 25,
       "actions": [
@@ -37,7 +37,7 @@
     },
     {
       "name": "powerful arrow",
-      "description": "none",
+      "description": "attack and roll back the opponent's box",
       "priority": 7,
       "cost": 30,
       "actions": [
@@ -59,7 +59,7 @@
     },
     {
       "name": "piercing arrow",
-      "description": "none",
+      "description": "attack without taking into account the defense of the opponent",
       "priority": 4,
       "cost": 20,
       "actions": [
@@ -73,7 +73,7 @@
     },
     {
       "name": "arrow rain",
-      "description": "none",
+      "description": "Attack and grow defense",
       "priority": 20,
       "cost": 100,
       "actions": [

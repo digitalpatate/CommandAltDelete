@@ -8,7 +8,7 @@
   "technique": [
     {
       "name": "Fireball",
-      "description": "none",
+      "description": "throws a fireball and burns the opponent",
       "priority": 10,
       "cost": 20,
       "actions": [
@@ -32,7 +32,7 @@
     },
     {
       "name": "Divine light",
-      "description": "none",
+      "description": "earns 20% of life, 10 of attack and 10 of defense\n",
       "priority": 10,
       "cost": 25,
       "actions": [
@@ -59,7 +59,7 @@
     },
     {
       "name": "punishment of gods",
-      "description": "none",
+      "description": "attack and roll down the opponent's attack and defense",
       "priority": 15,
       "cost": 25,
       "actions": [
@@ -75,21 +75,21 @@
           "type": "BOOST",
           "boostType": 0,
           "targetSelf": false,
-          "value": 10,
+          "value": -10,
           "duration": 2
         },
         {
           "type": "BOOST",
           "boostType": 1,
           "targetSelf": false,
-          "value": 10,
+          "value": -10,
           "duration": 2
         }
       ]
     },
     {
       "name": "Grace of the gods",
-      "description": "none",
+      "description": "attack, inflict poison, add recup and increase defenseattack, inflict poison, add recup and increase defense",
       "priority": 20,
       "cost": 100,
       "actions": [
