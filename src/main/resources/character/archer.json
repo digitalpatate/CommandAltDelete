@@ -1,7 +1,7 @@
 {
   "class": "Archer",
   "power": 10,
-  "health": 100,
+  "health": 20,
   "energy": 100,
   "defence": 10,
   "image": "character/image/archer.png",

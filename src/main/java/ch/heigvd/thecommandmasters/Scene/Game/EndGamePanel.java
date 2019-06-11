@@ -9,8 +9,11 @@ import java.awt.*;
 public class EndGamePanel extends JPanel {
 
     public EndGamePanel(){
-        setBackground(Color.BLACK);
-        add(new JLabel("Winner id " + GameContext.getInsance().getGameLogic().getWinner().getName()));
+        GameContext.getInsance().getGameScene().setLayout(new GridLayout(1,1));
+
+        JLabel label = new JLabel("The Winner is the " + GameContext.getInsance().getGameLogic().getWinner().getName());
+
+        add(label);
         revalidate();
         repaint();
     }

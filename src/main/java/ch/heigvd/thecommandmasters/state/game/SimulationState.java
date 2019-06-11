@@ -18,6 +18,7 @@ public class SimulationState implements GameState {
 
         GameLogic gameLogic = getInsance().gameLogic;
         System.out.println(getInsance().getSelectedCommands());
+        getInsance().getGameScene().getComandSelectionPanel().setVisible(false);
         gameLogic.playRound(
                 getInsance().getSelectedCommands().get(0).toArray(new Command[getInsance().getSelectedCommands().get(0).size()]),
                 getInsance().getSelectedCommands().get(1).toArray(new Command[getInsance().getSelectedCommands().get(1).size()])

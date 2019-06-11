@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+import static ch.heigvd.thecommandmasters.state.game.GameContext.getInsance;
+
 public class CommandSelectionPanel extends JPanel {
     CommandListener commandListener;
 
@@ -20,6 +22,8 @@ public class CommandSelectionPanel extends JPanel {
 
     public void reset(Entity entity) {
         removeAll();
+        setVisible(true);
+
 
         entity.fillEnergy();
 
