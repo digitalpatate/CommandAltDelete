@@ -22,6 +22,8 @@ An attack will always be launched in front of the character.The damages may vary
 
 ### Actions
 
+![UML_pattern](./figures/UML_pattern.png)
+
 For the actions we've  implemented  the command pattern structure. Instead of having an `Command` interface we've decided to use an abstract class enabling us to add attributes. The actions are the concrete commands, in the game we implement five main groups of concrete commands: 
 
 - move
