@@ -15,21 +15,27 @@ public class Board extends JPanel implements Displayer {
     Board(int mapSize){
         DisplayerManager.setDisplayer(this);
         this.mapSize = mapSize;
-        map = new CharacterPanel[mapSize];
-        for(int i =0; i< mapSize ;i++){
-           CharacterPanel panel = new CharacterPanel();
-           add(panel);
-           map[i]= panel;
-        }
-        Entity playerOne = GameContext.getInsance().getGameLogic().getPlayer1();
-        Entity playerTwo = GameContext.getInsance().getGameLogic().getPlayer2();
-        map[playerOne.getPosition()].setEntity(playerOne);
-        map[playerTwo.getPosition()].setEntity(playerTwo);
         setBackground(Color.DARK_GRAY);
         update();
     }
-
+    private  void reset(){
+        removeAll();
+        map = new CharacterPanel[mapSize];
+        for(int i =0; i< mapSize ;i++){
+            CharacterPanel panel = new CharacterPanel();
+            add(panel);
+            map[i]= panel;
+        }
+    }
     void update(){
+        reset();
+
+        Entity playerOne = GameContext.getInsance().getGameLogic().getPlayer1();
+        Entity playerTwo = GameContext.getInsance().getGameLogic().getPlayer2();
+
+        map[playerOne.getPosition()].setEntity(playerOne);
+        map[playerTwo.getPosition()].setEntity(playerTwo);
+
         for(int i =0; i< mapSize ;i++)
             map[i].draw();
 
