@@ -24,7 +24,6 @@ public class CommandSelectionPanel extends JPanel {
         removeAll();
         setVisible(true);
 
-
         entity.fillEnergy();
 
         for (Command command : entity.getCommands()){
