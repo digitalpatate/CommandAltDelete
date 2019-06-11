@@ -1,10 +1,16 @@
 package ch.heigvd.thecommandmasters.Scene.Game.menu;
 
+import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.command.Command;
+import ch.heigvd.thecommandmasters.state.game.GameContext;
+import ch.heigvd.thecommandmasters.state.game.PlayerRoundState;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
 public class SelectedCommandPanel extends JPanel {
@@ -39,6 +45,30 @@ public class SelectedCommandPanel extends JPanel {
         commandName.setHorizontalAlignment(JLabel.CENTER);
         Border blackline = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
         commandName.setBorder(blackline);
+
+        commandName.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                commands.remove(c);
+                remove(commandName);
+
+                int playerID = ((PlayerRoundState) GameContext.getInsance().getState()).PLAYER_ID;
+                Entity entity;
+
+                if (playerID == 0) {
+                    entity = GameContext.getInsance().getGameLogic().getPlayer1();
+                } else {
+                    entity = GameContext.getInsance().getGameLogic().getPlayer2();
+                }
+
+                if (entity != null) {
+                    entity.changeEnergy(c.COST);
+                }
+
+                revalidate();
+                repaint();
+            }
+        });
 
         add(commandName);
         this.revalidate();
