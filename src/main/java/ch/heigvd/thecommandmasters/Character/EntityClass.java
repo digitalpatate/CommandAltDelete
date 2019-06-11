@@ -3,7 +3,7 @@ package ch.heigvd.thecommandmasters.Character;
 import ch.heigvd.thecommandmasters.Game.Map;
 import ch.heigvd.thecommandmasters.command.Command;
 import ch.heigvd.thecommandmasters.command.MacroCommand;
-import ch.heigvd.thecommandmasters.command.UndoLastAction;
+import ch.heigvd.thecommandmasters.command.action.UndoLastAction;
 import ch.heigvd.thecommandmasters.command.action.MovementAction;
 import ch.heigvd.thecommandmasters.command.action.attack.AttackAction;
 import ch.heigvd.thecommandmasters.command.action.attack.AttackModifier;

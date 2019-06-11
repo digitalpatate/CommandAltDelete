@@ -19,11 +19,15 @@ public class HealAction extends Action {
     @Override
     final public void execute() {
         entity.heal(value);
+
+        LOG.info(String.format("%s: Give %d health to %s", name, value, entity.getName()));
     }
 
     @Override
     final public void undo() {
         entity.damage(value);
+
+        LOG.info(String.format("%s (undo): Remove %d health from %s", name, value, entity.getName()));
     }
 
     protected int calculateHeal() {

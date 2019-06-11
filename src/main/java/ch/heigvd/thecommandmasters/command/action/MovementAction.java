@@ -21,10 +21,14 @@ public class MovementAction extends Action {
     @Override
     public void execute() {
         map.move(entity, movement);
+
+        LOG.info(String.format("%s: Move %s by %d", name, entity.getName(), movement));
     }
 
     @Override
     public void undo() {
         map.move(entity, -movement);
+
+        LOG.info(String.format("%s (undo): Move %s by %d", name, entity.getName(), -movement));
     }
 }

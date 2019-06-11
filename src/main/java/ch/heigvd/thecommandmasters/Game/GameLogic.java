@@ -35,6 +35,11 @@ public class GameLogic {
         if (invoker.isReady() && !hasWinner()) {
             while (!invoker.hasFinished()) {
                 invoker.invokeNext();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
 

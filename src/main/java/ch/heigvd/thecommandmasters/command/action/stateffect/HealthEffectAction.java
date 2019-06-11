@@ -16,10 +16,16 @@ public class HealthEffectAction extends StatEffectAction {
     public void execute() {
         createStatEffect();
         entity.addHealthEffect(statEffect);
+
+        LOG.info(String.format("%s: Add health effect (%d, %d) to %s",
+                name, statEffect.getValue(), statEffect.getDuration(), entity.getName()));
     }
 
     @Override
     public void undo() {
         entity.removeHealthEffect(statEffect);
+
+        LOG.info(String.format("%s (undo): Remove health effect (%d, %d) from %s",
+            name, statEffect.getValue(), statEffect.getDuration(), entity.getName()));
     }
 }

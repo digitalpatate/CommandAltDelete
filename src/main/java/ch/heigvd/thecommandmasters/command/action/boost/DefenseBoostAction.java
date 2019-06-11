@@ -16,10 +16,17 @@ public class DefenseBoostAction extends BoostAction {
     public void execute() {
         createBoost();
         entity.addDefenseBoost(boost);
+
+
+        LOG.info(String.format("%s: Add defense boost (%d, %d) to %s",
+                name, boost.getValue(), boost.getDuration(), entity.getName()));
     }
 
     @Override
     public void undo() {
         entity.removeDefenseBoost(boost);
+
+        LOG.info(String.format("%s: Remove defense boost (%d, %d) from %s",
+                name, boost.getValue(), boost.getDuration(), entity.getName()));
     }
 }

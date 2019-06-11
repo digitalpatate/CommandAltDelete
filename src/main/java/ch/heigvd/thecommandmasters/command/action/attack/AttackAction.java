@@ -33,24 +33,20 @@ public class AttackAction extends Action {
 
             updateUsedBoosts();
 
-            LOG.info(String.format(
-                    "%s received %d damage from %s.",
-                    entity.getName(), damage, caster.getName()
-            ));
+            LOG.info(String.format("%s: %s received %d damage from %s.",
+                    name, entity.getName(), damage, caster.getName()));
         }
     }
 
     @Override
     final public void undo() {
 
-        // TODO: restore duration of boosts?
+        // TODO: restore duration of boosts? Nope!
 
         if (entity.heal(damage)) {
 
-            LOG.info(String.format(
-                    "%s's attack undone. %s gained %d health.",
-                    caster.getName(), entity.getName(), damage
-            ));
+            LOG.info(String.format("%s (undo): %s's attack undone. %s gained %d health.",
+                    name, caster.getName(), entity.getName(), damage));
         }
     }
 
@@ -81,27 +77,3 @@ public class AttackAction extends Action {
         caster.updatePowerBoosts();
     }
 }
-
-//        try {
-//
-//            this.DEFAULT_PERCENTAGE = (int) data.get("default");
-//            JSONArray distances = (JSONArray) data.get("distances");
-//            JSONArray percentages = (JSONArray) data.get("percentages");
-//
-//            if (distances.size() != percentages.size()) {
-//                throw new Exception();
-//            }
-//
-//            this.modifiers = new AttackModifier[distances.size()];
-//
-//            if (modifiers.length > 0) {
-//
-//                modifiers[0] = new AttackModifier((int) distances.get(0), (int) percentages.get(0));
-//                for (int i = 1; i < modifiers.length; ++i) {
-//                    modifiers[i] = new AttackModifier((int) distances.get(i), (int) percentages.get(i));
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            throw new IllegalArgumentException("Failed parsing attack data!");
-//        }

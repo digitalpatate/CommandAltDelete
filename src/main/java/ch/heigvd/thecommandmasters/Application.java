@@ -50,6 +50,10 @@ public class Application extends JFrame implements EventListener {
     }
 
     public static void main(String[] args) {
+
+        // Change Logger format
+        System.setProperty("java.util.logging.SimpleFormatter.format", "%4$s: %5$s%6$s%n");
+
         EventQueue.invokeLater(() -> {
             Application frame = null;
             try {
