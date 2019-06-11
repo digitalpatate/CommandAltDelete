@@ -2,13 +2,14 @@
 
 > Nohan BUDRY,  Alexandre MARQUES, Andrés MORENO, Didier PAGE, Robel TEKLEHAIMANOT
 
+
 ## Introduction
 
-For the class MCR at HEIG-VD, we were given a programming patter to implement, in our case  the pattern  was  the "Command pattern". In object-oriented programming, the **command pattern** is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. In order to create something intresting while implementing the pattern we've decided to conceive  a combat game, "CommandAltDelete". 
+For the class MCR at HEIG-VD, we were given a programming pattern to implement, in our case  the pattern  was  the `Command pattern`''. In object-oriented programming, the **command pattern** is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. In order to create something intresting while implementing the pattern we've decided to conceive  a combat game, "CommandAltDelete". 
 
 ## Concept
 
-The concept of the game is a one versus one combat and strategy game, where we can choose from three different types of characters, each one with a different set of skills. The fight takes place on a linear map composed of tiles. Once each player has decided the set of action that want to play the simulation is generated. The game is over once a player losses all his life points. 
+The concept of the game is a one versus one combat and strategy game, where we can choose from three different types of class characters, each one with a different set of skills. The fight takes place on a linear map composed of tiles. Once each player has decided the set of action that want to play then the simulation is generated. The game is over once a player losses all his life points. 
 
 ## Game Details 
 ### Map
@@ -21,9 +22,21 @@ An attack will always be launched in front of the character.The damages may vary
 
 ### Actions
 
-For the actions we've  implemented  the command pattern structure. Instead of having an command interface we've decided to use an abstract class enabling us to add attributes. The actions are the concrete commands, in the game we implement five main groups of concrete commands: move, attack, boost, heal and the state effect. We added the undo functionality from this pattern in order to reverse the different actions that were executed during a round as a feature inside the game that players might use.  In order to be able to create more complex actions we've also implemented the use of macro commands which is a composit of simple commands (The Macro represents, at some extent, a command that is built from the reunion of a set of other commands, in a given order). 
+For the actions we've  implemented  the command pattern structure. Instead of having an `Command` interface we've decided to use an abstract class enabling us to add attributes. The actions are the concrete commands, in the game we implement five main groups of concrete commands: 
 
-Each action costs energy and have priority, so that the player needs to strategically use his points in order to achieve victory.
+- move
+
+- attack 
+
+- boost
+
+- heal
+
+- And a command to apply a status effect. 
+
+We added the undo functionality from this pattern in order to reverse the different actions that were executed during a round as a feature inside the game that players might use.  In order to be able to create more complex actions we've also implemented the use of macro commands which is a composit of simple commands (The Macro represents, at some extent, a command that is built from the reunion of a set of other commands, in a given order). 
+
+Each action costs energy and have a priority, so that the player needs to strategically use his points in order to achieve victory.
 
 ##### Movement
 
@@ -74,3 +87,4 @@ Each round the players can spend their energy to form a list of actions they whi
 #### Simulation
 
 During the simulation, actions are implemented thanks to the implementation of an invoker that chooses  which command of which entity will be executed. The order of execution is calculated  with the priorities of the actions. 
+
