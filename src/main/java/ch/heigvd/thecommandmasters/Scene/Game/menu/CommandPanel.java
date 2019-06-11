@@ -21,8 +21,9 @@ public class CommandPanel extends JPanel implements MouseListener {
         setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
         setAlignmentY(java.awt.Component.CENTER_ALIGNMENT);
         setBackground(Color.white);
-
-        add(new JLabel(command.name));
+        JLabel label = new JLabel(command.name);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        add(label);
     }
 
     public void addCommandListener(CommandListener listener){

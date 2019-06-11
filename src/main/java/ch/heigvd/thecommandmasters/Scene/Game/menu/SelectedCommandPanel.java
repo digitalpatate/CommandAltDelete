@@ -3,13 +3,14 @@ package ch.heigvd.thecommandmasters.Scene.Game.menu;
 import ch.heigvd.thecommandmasters.command.Command;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.LinkedList;
 
 public class SelectedCommandPanel extends JPanel {
     LinkedList<Command> commands;
     public SelectedCommandPanel(){
-        setLayout(new GridLayout(10,1));
+        setLayout(new GridLayout(3,5,10,10));
 
 
         this.commands = new LinkedList<>();
@@ -35,6 +36,10 @@ public class SelectedCommandPanel extends JPanel {
         System.out.println("Add command" +c.name);
         commands.add(c);
         JLabel commandName = new JLabel(c.name);
+        commandName.setHorizontalAlignment(JLabel.CENTER);
+        Border blackline = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+        commandName.setBorder(blackline);
+
         add(commandName);
         this.revalidate();
         this.repaint();

@@ -9,9 +9,10 @@ import java.awt.*;
 public class CharacterPanel extends JPanel {
 
     Entity entity=null;
+    Image image;
 
     public CharacterPanel() {
-       Border blackline = BorderFactory.createLineBorder(Color.black);
+       Border blackline = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
         setBorder(blackline);
     }
 
@@ -22,7 +23,9 @@ public class CharacterPanel extends JPanel {
     public void setEntity(Entity entity) {
 
         this.entity = entity;
-        this.draw();
+        this.image = entity.ENTITY_CLASS.getImage();
+
+                this.draw();
 
     }
 
@@ -48,5 +51,11 @@ public class CharacterPanel extends JPanel {
         this.draw();
 
 
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+      g.drawImage(image, 25, 75, 52, 86, null);
     }
 }

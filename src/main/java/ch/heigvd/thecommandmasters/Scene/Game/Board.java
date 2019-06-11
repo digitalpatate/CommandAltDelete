@@ -47,7 +47,6 @@ public class Board extends JPanel implements Displayer {
     @Override
     public void showDamage(Entity entity, int amount) {
         update();
-
     }
 
     @Override
