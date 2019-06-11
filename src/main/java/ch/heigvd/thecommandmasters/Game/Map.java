@@ -78,26 +78,11 @@ public class Map {
     private void playerTwoMove(Entity player, int movement) {
         if (movement > 0) {
 
-            if (player.getPosition() - movement > p1.getPosition()) {
-
-                player.move(-movement);
-
-            } else {
-
-                player.setPosition(p1.getPosition() + 1);
-
-            }
+            player.move(-Math.min(movement, p2.getPosition() - p1.getPosition() - 1));
 
         } else {
 
-            if (player.getPosition() - movement <= mapSize - 1) {
-
-                player.move(-movement);
-
-            } else {
-                player.setPosition(mapSize - 1);
-
-            }
+            player.move(Math.min(-movement, mapSize - p2.getPosition() - 1));
         }
     }
 
@@ -109,33 +94,15 @@ public class Map {
     private void playerOneMove(Entity player, int movement) {
         if (movement > 0) {
 
-            if (player.getPosition() + movement < p2.getPosition()) {
-
-                player.move(movement);
-
-            } else {
-
-                player.setPosition(p2.getPosition() - 1);
-
-            }
-
+            player.move(Math.min(movement, p2.getPosition() - p1.getPosition() - 1));
 
         } else {
 
-            if (player.getPosition() - movement <= 0) {
-
-                player.move(movement);
-
-            } else {
-
-                player.setPosition(0);
-
-            }
-
+            player.move(-Math.min(-movement, p1.getPosition()));
         }
     }
 
-    public int getMapSize(){
+    public int getMapSize() {
         return mapSize;
     }
 
