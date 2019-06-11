@@ -25,7 +25,7 @@ public class Application extends JFrame implements EventListener {
     Context context;
 
 
-    private Application(int windowsWidth, int windowsHeigth) throws InterruptedException, InvocationTargetException {
+    public Application(int windowsWidth, int windowsHeigth) throws InterruptedException, InvocationTargetException {
         this.dimension  = new Dimension(windowsWidth,windowsHeigth);
         initUI();
 

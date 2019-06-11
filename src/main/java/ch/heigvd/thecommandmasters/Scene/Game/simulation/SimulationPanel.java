@@ -3,7 +3,6 @@ package ch.heigvd.thecommandmasters.Scene.Game.simulation;
 import ch.heigvd.thecommandmasters.Application;
 import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.Game.GameLogic;
-import ch.heigvd.thecommandmasters.Scene.Game.EndGamePanel;
 import ch.heigvd.thecommandmasters.command.Command;
 import ch.heigvd.thecommandmasters.displayer.Displayer;
 import ch.heigvd.thecommandmasters.displayer.DisplayerManager;
@@ -11,6 +10,7 @@ import ch.heigvd.thecommandmasters.state.game.GameContext;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 
 public class SimulationPanel extends JPanel implements Displayer {
@@ -101,11 +101,28 @@ public class SimulationPanel extends JPanel implements Displayer {
         GameContext.getInsance().resetSelectedCommands();
 
         if (gameLogic.hasWinner()) {
+            ImageIcon icon = new ImageIcon(new ImageIcon("img/potato.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));;
+            JOptionPane jop = new JOptionPane();
+            int option = jop.showConfirmDialog(null, "The Winner is the " + GameContext.getInsance().getGameLogic().getWinner().getName() +"\nDo you want to play again ?", "WINNER", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,icon);
 
-            gameContext.getGameScene().removeAll();
-            gameContext.getGameScene().add(new EndGamePanel());
-            gameContext.getGameScene().revalidate();
-            gameContext.getGameScene().repaint();
+            if(option == JOptionPane.OK_OPTION){
+
+                Application frame = null;
+                try {
+                    frame = new Application(1280,720);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                frame.pack();
+
+                frame.setVisible(true);
+                frame.setLayout(null);
+            }
+            else{
+                System.exit(0);
+            }
 
         } else {
             gameContext.setState(gameContext.getState().getNextState());
