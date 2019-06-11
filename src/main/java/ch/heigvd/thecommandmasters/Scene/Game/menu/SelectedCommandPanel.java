@@ -28,6 +28,7 @@ public class SelectedCommandPanel extends JPanel {
         revalidate();
         repaint();
     }
+
     public void update(){
         removeAll();
 
@@ -38,6 +39,7 @@ public class SelectedCommandPanel extends JPanel {
         revalidate();
         repaint();
     }
+
     public void addCommandToList(Command c) {
         System.out.println("Add command" +c.name);
         commands.add(c);

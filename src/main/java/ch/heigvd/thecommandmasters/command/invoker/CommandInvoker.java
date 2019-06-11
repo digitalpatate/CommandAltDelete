@@ -79,6 +79,13 @@ public class CommandInvoker {
     }
 
     /**
+     * Gets the id of the last entity that had an action invoked.
+     */
+    public int getLastEntityId() {
+        return invocationOrder[0];
+    }
+
+    /**
      * Chooses an invoker slave and invokes his next command.
      * The slave with the lowest priority is the one to invoke its command.
      * If there is a tie, the slave that was invoked the least recently is chosen.

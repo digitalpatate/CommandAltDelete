@@ -1,9 +1,9 @@
 {
   "class": "Archer",
-  "power": 10,
-  "health": 20,
+  "power": 30,
+  "health": 60,
   "energy": 100,
-  "defence": 10,
+  "defence": 5,
   "image": "character/image/archer.png",
   "technique": [
     {

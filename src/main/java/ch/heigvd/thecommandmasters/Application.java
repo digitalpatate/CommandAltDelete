@@ -11,6 +11,7 @@ import java.util.EventListener;
 
 public class Application extends JFrame implements EventListener {
 
+    public static Application APP;
 
     Dimension dimension;
     JPanel contentPanel;
@@ -34,6 +35,8 @@ public class Application extends JFrame implements EventListener {
         selectPlayer2State = new CharacterSelectionState(gameState);
         selectPlayer1State = new CharacterSelectionState(selectPlayer2State);
         context.setState(selectPlayer1State);
+
+        APP = this;
     }
     private void initUI() {
 

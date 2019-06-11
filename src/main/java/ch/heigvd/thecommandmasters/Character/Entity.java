@@ -140,11 +140,12 @@ public class Entity {
             return false;
         }
 
+        health.changeStat(amount);
+
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showHeal(this, amount);
         }
 
-        health.changeStat(amount);
         return true;
     }
 
@@ -159,11 +160,12 @@ public class Entity {
             return false;
         }
 
+        health.changeStat(-amount);
+
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showDamage(this, amount);
         }
 
-        health.changeStat(-amount);
         return true;
     }
 
@@ -183,7 +185,14 @@ public class Entity {
      * Updates the stat effects attach to the health.
      */
     public void updateHealthEffects() {
-        health.updateEffects();
+
+        int effectsValue = health.updateEffects();
+
+        if (effectsValue < 0) {
+            damage(-effectsValue);
+        } else if (effectsValue > 0) {
+            heal(effectsValue);
+        }
     }
 
     /**
