@@ -57,19 +57,21 @@ public class Application extends JFrame implements EventListener {
         // Change Logger format
         System.setProperty("java.util.logging.SimpleFormatter.format", "%4$s: %5$s%6$s%n");
 
-        EventQueue.invokeLater(() -> {
-            Application frame = null;
-            try {
-                frame = new Application(1280,720);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            frame.pack();
+        EventQueue.invokeLater(Application::startApp);
+    }
 
-            frame.setVisible(true);
-            frame.setLayout(null);
-        });
+    public static void startApp() {
+        Application frame = null;
+        try {
+            frame = new Application(1280,720);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        frame.pack();
+
+        frame.setVisible(true);
+        frame.setLayout(null);
     }
 }

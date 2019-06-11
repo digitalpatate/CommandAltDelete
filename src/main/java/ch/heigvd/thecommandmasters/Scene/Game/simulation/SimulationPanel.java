@@ -68,22 +68,11 @@ public class SimulationPanel extends JPanel implements Displayer {
         gameLogic.setupRound(p1Commands, p2Commands);
         double actionTimer = 0;
 
-        while (true) {
+        while (!gameLogic.hasWinner() && !gameLogic.hasFinished()) {
 
             ++actionTimer;
 
             if (actionTimer >= FRAME_PER_ACTION) {
-
-                if (gameLogic.hasWinner()) {
-                    System.out.println("Show winner!");
-                    break;
-                }
-
-                if (gameLogic.hasFinished()) {
-                    System.out.println("Start next round");
-                    break;
-                }
-
                 gameLogic.nextAction();
                 actionTimer = 0;
             }
@@ -107,20 +96,10 @@ public class SimulationPanel extends JPanel implements Displayer {
 
             if(option == JOptionPane.OK_OPTION){
 
-                Application frame = null;
-                try {
-                    frame = new Application(1280,720);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-                frame.pack();
+                Application.APP.dispose();
+                Application.startApp();
 
-                frame.setVisible(true);
-                frame.setLayout(null);
-            }
-            else{
+            } else {
                 System.exit(0);
             }
 
