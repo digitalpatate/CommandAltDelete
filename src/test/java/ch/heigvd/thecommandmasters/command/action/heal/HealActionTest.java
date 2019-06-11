@@ -12,7 +12,7 @@ public class HealActionTest {
 
     @BeforeAll
     static void setup() {
-        entity = new Entity(100, 100, 10, 5, "Jack");
+        entity = new Entity(100, 100, 10, 5, "Jack", null);
         entity.damage(50);
 
         action = new HealAction(entity, 10);

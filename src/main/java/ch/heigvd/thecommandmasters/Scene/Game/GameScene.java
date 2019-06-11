@@ -1,5 +1,6 @@
 package ch.heigvd.thecommandmasters.Scene.Game;
 
+import ch.heigvd.thecommandmasters.Character.Entity;
 import ch.heigvd.thecommandmasters.Scene.Game.menu.CommandSelectionPanel;
 import ch.heigvd.thecommandmasters.Scene.Game.menu.EndTurnPanel;
 import ch.heigvd.thecommandmasters.Scene.Game.menu.SelectedCommandPanel;
@@ -54,12 +55,12 @@ public class GameScene extends JPanel {
         repaint();
     }
 
-    public void updateCommandSelectionPanel(List<Command> commands) {
+    public void updateCommandSelectionPanel(Entity entity) {
         System.out.println("updateCommandSelectionPanel");
 
         selectedCommandPanel.reset();
 
-        comandSelectionPanel.reset(commands);
+        comandSelectionPanel.reset(entity);
         comandSelectionPanel.addCommandListener(command -> {
             selectedCommandPanel.addCommandToList(command.getCommand());
         });

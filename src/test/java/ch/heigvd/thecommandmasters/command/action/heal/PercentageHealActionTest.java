@@ -9,7 +9,7 @@ public class PercentageHealActionTest {
     @Test
     void itCalculatesHealCorrectly() {
 
-        Entity entity = new Entity(100, 100, 10, 5, "Jack");
+        Entity entity = new Entity(100, 100, 10, 5, "Jack", null);
         entity.damage(50);
 
         PercentageHealAction action = new PercentageHealAction(entity, 50);

@@ -13,8 +13,8 @@ public class AttackActionTest {
 
     @BeforeEach
     void setup() {
-        jack = new Entity(100, 100, 10, 5, "Jack");
-        steve = new Entity(100, 100, 10, 5, "Steve");
+        jack = new Entity(100, 100, 10, 5, "Jack", null);
+        steve = new Entity(100, 100, 10, 5, "Steve", null);
         action = new AttackAction(jack, steve, 100, new AttackModifier[] {});
     }
 

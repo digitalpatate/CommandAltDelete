@@ -70,7 +70,7 @@ public class EntityClass {
      * @return The new character
      */
     public Entity createEntity() {
-        return new Entity(getHealth(), getEnergy(), getPower(), getDefence(), this.toString());
+        return new Entity(this);
     }
 
     /**

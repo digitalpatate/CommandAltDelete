@@ -14,10 +14,10 @@ public class MapTest {
     @BeforeEach
     void createMap() {
 
-        entity1 = new Entity(100, 100, 10, 10, "0");
+        entity1 = new Entity(100, 100, 10, 10, "0", null);
         entity1.setId(0);
 
-        entity2 = new Entity(100, 100, 10, 10, "0");
+        entity2 = new Entity(100, 100, 10, 10, "0", null);
         entity2.setId(1);
 
         map = new Map(10, entity1, entity2);

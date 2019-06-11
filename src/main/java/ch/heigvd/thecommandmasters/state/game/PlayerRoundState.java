@@ -13,9 +13,9 @@ public class PlayerRoundState implements GameState {
     @Override
     public void doAction(GameContext context) {
         if (playerId == 0)
-            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer1().getCommands());
+            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer1());
         else
-            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer2().getCommands());
+            context.gameScene.updateCommandSelectionPanel(context.gameLogic.getPlayer2());
     }
 
 

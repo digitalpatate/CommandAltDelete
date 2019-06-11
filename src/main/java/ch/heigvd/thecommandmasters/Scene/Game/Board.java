@@ -58,6 +58,11 @@ public class Board extends JPanel implements Displayer {
     }
 
     @Override
+    public void showEnergy(Entity entity, int amount) {
+        update();
+    }
+
+    @Override
     public void showMovement(Entity entity, int from, int to) {
         update();
 

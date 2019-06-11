@@ -16,6 +16,7 @@ public class Entity {
     private int id;
     private int position;
     private List<Command> commands;
+    public final EntityClass ENTITY_CLASS;
 
     /**
      * Constructor
@@ -26,16 +27,28 @@ public class Entity {
      * @param Defense Defending the character
      * @param name    Character's name
      */
-    public Entity(int health, int energy, int power, int Defense, String name) {
+    public Entity(int health, int energy, int power, int Defense, String name, EntityClass entityClass) {
         this.health = new Stats(health, "Health");
         this.energy = new Stats(energy, "Energy");
         this.power = new Feature(power, "Power");
         this.defense = new Feature(Defense, "Defense");
         this.name = name;
+        this.ENTITY_CLASS = entityClass;
 
         this.id = -1;
         this.position = 0;
         this.commands = null;
+    }
+
+    public Entity(EntityClass entityClass) {
+        this(
+                entityClass.getHealth(),
+                entityClass.getEnergy(),
+                entityClass.getPower(),
+                entityClass.getDefence(),
+                entityClass.toString(),
+                entityClass
+        );
     }
 
     /**
@@ -123,7 +136,7 @@ public class Entity {
      * @return True if the entity has been healed. False if amount was negative.
      */
     public boolean heal(int amount) {
-        if (amount <= 0) {
+        if (amount < 0) {
             return false;
         }
 
@@ -142,7 +155,7 @@ public class Entity {
      * @return True if the entity has been damaged. False if amount was negative.
      */
     public boolean damage(int amount) {
-        if (amount <= 0) {
+        if (amount < 0) {
             return false;
         }
 
@@ -152,6 +165,18 @@ public class Entity {
 
         health.changeStat(-amount);
         return true;
+    }
+
+    public void changeEnergy(int amount) {
+        energy.changeStat(amount);
+
+        if (DisplayerManager.hasDisplayer()) {
+            DisplayerManager.getDisplayer().showEnergy(this, amount);
+        }
+    }
+
+    public void fillEnergy() {
+        changeEnergy(energy.MAX);
     }
 
     /**

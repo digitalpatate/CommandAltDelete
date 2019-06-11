@@ -6,5 +6,6 @@ public interface Displayer {
 
     void showDamage(Entity entity, int amount);
     void showHeal(Entity entity, int amount);
+    void showEnergy(Entity entity, int amount);
     void showMovement(Entity entity, int from, int to);
 }

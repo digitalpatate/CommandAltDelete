@@ -14,10 +14,10 @@ public class MovementActionTest {
     @BeforeAll
     static void setup() {
 
-        entity = new Entity(100, 100, 10, 10, "Jack");
+        entity = new Entity(100, 100, 10, 10, "Jack", null);
         entity.setId(0);
 
-        Entity entity2 = new Entity(100, 100, 10, 10, "Steve");
+        Entity entity2 = new Entity(100, 100, 10, 10, "Steve", null);
         entity2.setId(1);
 
         Map map = new Map(10, entity, entity2);

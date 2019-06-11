@@ -22,7 +22,8 @@ public class GameLogicTest {
 
         @Override
         public Entity createEntity() {
-            return new Entity(100, 100, 10, 10, "Jack");
+            return new Entity(100, 100, 10, 10, "Jack", null
+            );
         }
 
         @Override
