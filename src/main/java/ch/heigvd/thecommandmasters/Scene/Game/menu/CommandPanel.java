@@ -17,6 +17,11 @@ public class CommandPanel extends JPanel implements MouseListener {
 
         this.command = command;
         addMouseListener(this);
+        setLayout(new GridLayout(1,1));
+        setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+        setAlignmentY(java.awt.Component.CENTER_ALIGNMENT);
+        setBackground(Color.white);
+
         add(new JLabel(command.name));
     }
 

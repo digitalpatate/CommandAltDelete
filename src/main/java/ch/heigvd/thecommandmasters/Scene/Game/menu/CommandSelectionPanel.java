@@ -13,7 +13,8 @@ public class CommandSelectionPanel extends JPanel {
 
     public CommandSelectionPanel(){
 
-        setBackground(Color.RED);
+
+        setLayout(new GridLayout(3,5,10,10));
     }
 
     public void reset(List<Command> commands) {

@@ -13,9 +13,10 @@ public class Board extends JPanel implements Displayer {
     int mapSize;
     CharacterPanel[] map;
     Board(int mapSize){
+        setLayout(new GridLayout(1,mapSize));
+
         DisplayerManager.setDisplayer(this);
         this.mapSize = mapSize;
-        setBackground(Color.DARK_GRAY);
         update();
     }
     private  void reset(){

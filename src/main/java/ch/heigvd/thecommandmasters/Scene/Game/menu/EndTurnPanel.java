@@ -12,7 +12,7 @@ import static ch.heigvd.thecommandmasters.state.game.GameContext.*;
 public class EndTurnPanel extends JPanel {
 
     public EndTurnPanel() {
-        setBackground(Color.blue);
+
 
         JButton button = new JButton("End turn");
         add(button);

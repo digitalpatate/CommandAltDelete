@@ -9,9 +9,10 @@ import java.util.LinkedList;
 public class SelectedCommandPanel extends JPanel {
     LinkedList<Command> commands;
     public SelectedCommandPanel(){
+        setLayout(new GridLayout(10,1));
+
 
         this.commands = new LinkedList<>();
-        setBackground(Color.ORANGE);
     }
     public void reset(){
         System.out.println("selectedCommandPanel reset");

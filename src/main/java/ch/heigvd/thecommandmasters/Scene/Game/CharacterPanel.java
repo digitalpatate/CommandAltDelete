@@ -3,12 +3,16 @@ package ch.heigvd.thecommandmasters.Scene.Game;
 import ch.heigvd.thecommandmasters.Character.Entity;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 
 public class CharacterPanel extends JPanel {
 
     Entity entity=null;
 
     public CharacterPanel() {
+       Border blackline = BorderFactory.createLineBorder(Color.black);
+        setBorder(blackline);
     }
 
     public Entity getEntity() {

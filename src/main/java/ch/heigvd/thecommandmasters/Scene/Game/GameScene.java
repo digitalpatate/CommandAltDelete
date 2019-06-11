@@ -28,25 +28,29 @@ public class GameScene extends JPanel {
         this.selectedCommandPanel = new SelectedCommandPanel();
         this.endTurnPanel = new EndTurnPanel();
 
-        setLayout(new GridLayout());
+        setLayout(new GridLayout(4,1,5,5));
+
+        board.setPreferredSize(new Dimension(1000,500));
+        setLocation(0,0);
+
+        comandSelectionPanel.setPreferredSize(new Dimension(280,500));
+        setLocation(4,0);
 
 
-        /*add(board, new GridBagConstraints(0,0,0,0,0.8,1,GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
+        selectedCommandPanel.setPreferredSize(new Dimension(500,220));
+        setLocation(0,4);
 
-        add(comandSelectionPanel, new GridBagConstraints(0,1,0,1,0.2,1,GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
 
-        add(selectedCommandPanel, new GridBagConstraints(1,0,1,0,0.8,0.2,GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
 
-        add(endTurnPanel,new GridBagConstraints(1,1,1,1,0.2,0.2,GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));*/
+        endTurnPanel.setPreferredSize(new Dimension(280,220));
+        setLocation(4,4);
+
 
         add(board);
         add(selectedCommandPanel);
         add(comandSelectionPanel);
         add(endTurnPanel);
+
         repaint();
     }
 
