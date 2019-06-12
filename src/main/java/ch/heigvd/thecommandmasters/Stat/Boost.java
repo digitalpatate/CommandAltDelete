@@ -20,11 +20,7 @@ public class Boost {
      * reduce the duration when the entity lose health or attack
      */
     public void reduceDuration() {
-        if (duration <= 1) {
-            duration = 0;
-        } else {
-            duration--;
-        }
+        duration--;
     }
 
     /**

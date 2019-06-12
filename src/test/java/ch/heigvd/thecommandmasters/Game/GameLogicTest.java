@@ -62,7 +62,10 @@ public class GameLogicTest {
             public void undo() {}
         };
 
-        game.playRound(new Command[] {c1, c1, c1, c1}, new Command[] {c2, c2});
+        game.setupRound(new Command[] {c1, c1, c1, c1}, new Command[] {c2, c2});
+        while (!game.hasWinner() && !game.hasFinished()) {
+            game.nextAction();
+        }
 
         Assertions.assertArrayEquals(new Integer[] {0, 1, 0, 0, 1, 0}, order.toArray());
     }

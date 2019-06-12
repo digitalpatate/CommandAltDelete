@@ -27,23 +27,20 @@ public class GameLogic {
 
     }
 
-    public void playRound(Command[] p1Commands, Command[] p2Commands) {
-
+    public void setupRound(Command[] p1Commands, Command[] p2Commands) {
         invoker.setEntityCommands(0, p1Commands);
         invoker.setEntityCommands(1, p2Commands);
+    }
 
-        if (invoker.isReady() && !hasWinner()) {
-            while (!invoker.hasFinished()) {
-                invoker.invokeNext();
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
+    public void endRound() {
         invoker.reset();
+    }
+
+    public void nextAction() {
+        if (invoker.isReady() && !invoker.hasFinished()) {
+            invoker.invokeNext();
+            (invoker.getLastEntityId() == 0 ? getPlayer1() : getPlayer2()).updateHealthEffects();
+        }
     }
 
     public boolean hasWinner() {
@@ -57,6 +54,10 @@ public class GameLogic {
         }
 
         return player1.getHealth() <= 0 ? player2 : player1;
+    }
+
+    public boolean hasFinished() {
+        return invoker.hasFinished();
     }
 
     public Entity getPlayer1() {

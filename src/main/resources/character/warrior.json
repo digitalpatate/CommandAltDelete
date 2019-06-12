@@ -1,9 +1,9 @@
 {
   "class": "Warrior",
-  "power": 10,
-  "health": 70,
+  "power": 25,
+  "health": 80,
   "energy": 100,
-  "defence": 20,
+  "defence": 10,
   "image": "character/image/warrior.png",
   "technique": [
     {

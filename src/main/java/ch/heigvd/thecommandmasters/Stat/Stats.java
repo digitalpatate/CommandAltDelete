@@ -1,5 +1,7 @@
 package ch.heigvd.thecommandmasters.Stat;
 
+import ch.heigvd.thecommandmasters.displayer.DisplayerManager;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -78,19 +80,23 @@ public class Stats {
     /**
      * update the effect
      */
-    public void updateEffects() {
+    public int updateEffects() {
+
+        int total = 0;
 
         Iterator<StatEffect> it = effects.iterator();
         while (it.hasNext()) {
 
             StatEffect effect = it.next();
 
-            changeStat(effect.getValue());
+            total += effect.getValue();
             effect.reduceDuration();
 
             if (effect.getDuration() <= 0) {
                 it.remove();
             }
         }
+
+        return total;
     }
 }

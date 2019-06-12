@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Entity {
 
+    public final EntityClass ENTITY_CLASS;
     private Stats health;
     private Stats energy;
     private Feature power;
@@ -16,7 +17,6 @@ public class Entity {
     private int id;
     private int position;
     private List<Command> commands;
-    public final EntityClass ENTITY_CLASS;
 
     /**
      * Constructor
@@ -40,6 +40,11 @@ public class Entity {
         this.commands = null;
     }
 
+    /**
+     * Construtor
+     *
+     * @param entityClass the class to create the character
+     */
     public Entity(EntityClass entityClass) {
         this(
                 entityClass.getHealth(),
@@ -140,11 +145,12 @@ public class Entity {
             return false;
         }
 
+        health.changeStat(amount);
+
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showHeal(this, amount);
         }
 
-        health.changeStat(amount);
         return true;
     }
 
@@ -159,14 +165,20 @@ public class Entity {
             return false;
         }
 
+        health.changeStat(-amount);
+
         if (DisplayerManager.hasDisplayer()) {
             DisplayerManager.getDisplayer().showDamage(this, amount);
         }
 
-        health.changeStat(-amount);
         return true;
     }
 
+    /**
+     * change the energy of the characters
+     *
+     * @param amount the number of energies to add
+     */
     public void changeEnergy(int amount) {
         energy.changeStat(amount);
 
@@ -175,6 +187,9 @@ public class Entity {
         }
     }
 
+    /**
+     * fill the energy to the maximum
+     */
     public void fillEnergy() {
         changeEnergy(energy.MAX);
     }
@@ -183,7 +198,14 @@ public class Entity {
      * Updates the stat effects attach to the health.
      */
     public void updateHealthEffects() {
-        health.updateEffects();
+
+        int effectsValue = health.updateEffects();
+
+        if (effectsValue < 0) {
+            damage(-effectsValue);
+        } else if (effectsValue > 0) {
+            heal(effectsValue);
+        }
     }
 
     /**

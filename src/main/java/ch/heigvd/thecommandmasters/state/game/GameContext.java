@@ -9,8 +9,6 @@ import java.util.LinkedList;
 
 public class GameContext {
 
-
-
     GameLogic gameLogic;
     GameScene gameScene;
 
@@ -60,8 +58,8 @@ public class GameContext {
         return selectedCommands;
     }
 
-    public void setSelectedCommands(LinkedList<LinkedList<Command>> selectedCommands) {
-        this.selectedCommands = selectedCommands;
+    public void resetSelectedCommands() {
+        selectedCommands.clear();
     }
 
     public Command[] getSelectedCommandsToArray() {
@@ -76,6 +74,4 @@ public class GameContext {
     public GameLogic getGameLogic() {
         return gameLogic;
     }
-
-
 }

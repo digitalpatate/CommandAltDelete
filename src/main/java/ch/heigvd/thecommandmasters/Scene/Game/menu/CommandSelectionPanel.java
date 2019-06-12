@@ -15,8 +15,6 @@ public class CommandSelectionPanel extends JPanel {
     CommandListener commandListener;
 
     public CommandSelectionPanel(){
-
-
         setLayout(new GridLayout(3,5,10,10));
     }
 

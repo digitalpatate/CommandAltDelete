@@ -1,14 +1,14 @@
 {
   "class": "Magician",
-  "power": 15,
-  "health":20,
+  "power": 30,
+  "health": 70,
   "energy": 100,
   "defence": 5,
   "image": "character/image/magician.png",
   "technique": [
     {
       "name": "Fireball",
-      "description": "throws a fireball and burns the opponent",
+      "description": "Throws a fireball and burns the opponent.",
       "priority": 10,
       "cost": 20,
       "actions": [
@@ -25,7 +25,7 @@
           "type": "STAT_EFFECT",
           "statEffectType": 0,
           "targetSelf": false,
-          "value": -15,
+          "value": -10,
           "duration": 3
         }
       ]

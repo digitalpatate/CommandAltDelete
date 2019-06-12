@@ -5,7 +5,6 @@ public class StatEffect {
     int value;
     Stats stat = null;
 
-
     /**
      * Constructor
      * @param value
@@ -14,22 +13,6 @@ public class StatEffect {
     public StatEffect(int value, int duration){
         this.value    = value;
         this.duration = duration;
-    }
-
-    /**
-     * the method use the method of the class stat for increase the stat
-     */
-    public void increaseEffectStat(){
-        stat.changeStat(value);
-        duration--;
-    }
-
-    /**
-     * the method use the method of the class stat for reduce the stat
-     */
-    public void reduceEffectStat(){
-        stat.changeStat(value);
-        duration--;
     }
 
     /**

@@ -1,7 +1,7 @@
 [
   {
-    "name": "Advanced 1",
-    "description": "Advance one square",
+    "name": "Advance 1",
+    "description": "Moves forward by 1 tile.",
     "priority": 1,
     "cost": 5,
     "actions": [
@@ -13,8 +13,8 @@
     ]
   },
   {
-    "name": "Advanced 2",
-    "description": "Advance two squares",
+    "name": "Advance 2",
+    "description": "Moves forward by 2 tiles.",
     "priority": 2,
     "cost": 7,
     "actions": [
@@ -26,8 +26,8 @@
     ]
   },
   {
-    "name": "Advanced 3",
-    "description": "Advance three squares",
+    "name": "Advance 3",
+    "description": "AdMoves forward by 3 tiles.",
     "priority": 3,
     "cost": 10,
     "actions": [
@@ -39,8 +39,8 @@
     ]
   },
   {
-    "name": "Retreat of 1",
-    "description": "back one boxe",
+    "name": "Retreat 1",
+    "description": "Moves backward by 1 tile.",
     "priority": 2,
     "cost": 5,
     "actions": [
@@ -52,8 +52,8 @@
     ]
   },
   {
-    "name": "Retreat of 2",
-    "description": "back two boxes",
+    "name": "Retreat 2",
+    "description": "Moves backward by 2 tiles.",
     "priority": 3,
     "cost": 7,
     "actions": [
@@ -65,8 +65,8 @@
     ]
   },
   {
-    "name": "Retreat of 3",
-    "description": "back three boxes",
+    "name": "Retreat 3",
+    "description": "Moves backward by 3 tiles.",
     "priority": 4,
     "cost": 10,
     "actions": [
@@ -78,8 +78,8 @@
     ]
   },
   {
-    "name": "Stabbing attack",
-    "description": "dagger attack",
+    "name": "Simple attack",
+    "description": "A simple attack for 50% damage.",
     "priority": 5,
     "cost": 10,
     "actions": [
@@ -87,10 +87,7 @@
         "type": "ATTACK",
         "attackType": 0,
         "default": 50,
-        "modifiers": [
-          [1,120],
-          [5,75]
-        ]
+        "modifiers": []
       }
     ]
   },

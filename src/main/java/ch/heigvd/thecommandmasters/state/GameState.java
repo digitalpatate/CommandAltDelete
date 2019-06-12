@@ -8,12 +8,12 @@ import ch.heigvd.thecommandmasters.state.game.SimulationState;
 
 public class GameState implements State {
 
-    GameContext gameContext;
+    private GameContext gameContext;
 
-    PlayerRoundState playerOneRoundState;
-    PlayerRoundState playerTwoRoundState;
+    private PlayerRoundState playerTwoRoundState;
+    private PlayerRoundState playerOneRoundState;
 
-    SimulationState simulationState;
+    private SimulationState simulationState;
 
     public GameState() {
         this.gameContext = null;

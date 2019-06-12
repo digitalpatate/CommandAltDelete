@@ -11,6 +11,7 @@ import java.util.EventListener;
 
 public class Application extends JFrame implements EventListener {
 
+    public static Application APP;
 
     Dimension dimension;
     JPanel contentPanel;
@@ -24,7 +25,7 @@ public class Application extends JFrame implements EventListener {
     Context context;
 
 
-    private Application(int windowsWidth, int windowsHeigth) throws InterruptedException, InvocationTargetException {
+    public Application(int windowsWidth, int windowsHeigth) throws InterruptedException, InvocationTargetException {
         this.dimension  = new Dimension(windowsWidth,windowsHeigth);
         initUI();
 
@@ -34,6 +35,8 @@ public class Application extends JFrame implements EventListener {
         selectPlayer2State = new CharacterSelectionState(gameState);
         selectPlayer1State = new CharacterSelectionState(selectPlayer2State);
         context.setState(selectPlayer1State);
+
+        APP = this;
     }
     private void initUI() {
 
@@ -54,19 +57,21 @@ public class Application extends JFrame implements EventListener {
         // Change Logger format
         System.setProperty("java.util.logging.SimpleFormatter.format", "%4$s: %5$s%6$s%n");
 
-        EventQueue.invokeLater(() -> {
-            Application frame = null;
-            try {
-                frame = new Application(1280,720);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            frame.pack();
+        EventQueue.invokeLater(Application::startApp);
+    }
 
-            frame.setVisible(true);
-            frame.setLayout(null);
-        });
+    public static void startApp() {
+        Application frame = null;
+        try {
+            frame = new Application(1280,720);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        frame.pack();
+
+        frame.setVisible(true);
+        frame.setLayout(null);
     }
 }

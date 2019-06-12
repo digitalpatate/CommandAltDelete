@@ -158,7 +158,9 @@ public class EntityClass {
 
             List<Command> techniqueActionList = new ArrayList<>();
             for (int j = 0; j < actions.size(); ++j) {
-                techniqueActionList.add(createCommand(yourSelf, opponent, map, invoker, (JSONObject) actions.get(j)));
+                Command command = createCommand(yourSelf, opponent, map, invoker, (JSONObject) actions.get(j));
+                command.name = (String) technique.get("name");
+                techniqueActionList.add(command);
             }
 
             int priority = Integer.parseInt(technique.get("priority").toString());
