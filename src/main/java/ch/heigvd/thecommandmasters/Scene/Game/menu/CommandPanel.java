@@ -17,13 +17,18 @@ public class CommandPanel extends JPanel implements MouseListener {
 
         this.command = command;
         addMouseListener(this);
-        setLayout(new GridLayout(1,1));
+        setLayout(new GridLayout(3,1));
         setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
         setAlignmentY(java.awt.Component.CENTER_ALIGNMENT);
         setBackground(Color.white);
-        JLabel label = new JLabel(command.name);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        add(label);
+        JLabel commandName = new JLabel(command.name);
+        JLabel commandCost = new JLabel("Cost : "+command.COST);
+        JLabel commandPriority = new JLabel("Priority : "+command.PRIORITY);
+        commandName.setHorizontalAlignment(JLabel.CENTER);
+        add(commandName);
+        add(commandCost);
+        add(commandPriority);
+        setToolTipText(command.description);
     }
 
     public void addCommandListener(CommandListener listener){
@@ -49,7 +54,7 @@ public class CommandPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
-        setBackground(Color.blue);
+        setBackground(Color.lightGray);
     }
 
     @Override

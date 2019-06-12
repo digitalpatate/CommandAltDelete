@@ -27,7 +27,7 @@
   },
   {
     "name": "Advance 3",
-    "description": "AdMoves forward by 3 tiles.",
+    "description": "Moves forward by 3 tiles.",
     "priority": 3,
     "cost": 10,
     "actions": [
@@ -93,7 +93,7 @@
   },
   {
     "name": "Care",
-    "description": "Heal about 10 this character",
+    "description": "Recover 10 health point,",
     "priority": 5,
     "cost": 10,
     "actions": [

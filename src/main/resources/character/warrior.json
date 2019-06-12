@@ -8,7 +8,7 @@
   "technique": [
     {
       "name": "Quick blow",
-      "description": "Advanced two boxes, attack and back two boxes",
+      "description": "Moves forward by two tiles, attacks and moves back",
       "priority": 10,
       "cost": 20,
       "actions": [
