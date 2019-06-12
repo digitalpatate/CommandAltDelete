@@ -67,6 +67,8 @@ Once the game is launched, each player must select his character. There are thre
 
 ##### Stats
 
+![UML_stats](./figures/UML_stats.jpeg)
+
 - Health: Represents the number of life points. If it reaches zero, the character dies, Has a max value
 - Damage: The base attack damage.
 - Defense: The base defense.
